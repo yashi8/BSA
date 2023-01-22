@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "132477842579",
+    "project_id": "dulcet-velocity-295413",
+    "storage_bucket": "dulcet-velocity-295413.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132477842579:android:abe1aec988e7224f788966",
+        "android_client_info": {
+          "package_name": "com.yashishu.bsa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132477842579-4kgobde8k3g8o57tr3q8e42s0d18houq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4Y2Hn96lxUAGLd6oVN_xBharxei5WAYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132477842579-4kgobde8k3g8o57tr3q8e42s0d18houq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

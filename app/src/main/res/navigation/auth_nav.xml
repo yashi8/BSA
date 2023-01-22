@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav"
+    app:startDestination="@id/loginSelectorFragment">
+
+    <fragment
+        android:id="@+id/loginSelectorFragment"
+        android:name="com.yashishu.bsa.auth.LoginSelectorFragment"
+        android:label="fragment_login_selector"
+        tools:layout="@layout/fragment_login_selector" >
+        <action
+            android:id="@+id/action_loginSelectorFragment_to_admLoginFragment"
+            app:destination="@id/admLoginFragment" />
+        <action
+            android:id="@+id/action_loginSelectorFragment_to_custLoginFragment"
+            app:destination="@id/custLoginFragment" />
+        <action
+            android:id="@+id/action_loginSelectorFragment_to_vndrLoginFragment"
+            app:destination="@id/vndrLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/admLoginFragment"
+        android:name="com.yashishu.bsa.auth.AdmLoginFragment"
+        android:label="fragment_adm_login"
+        tools:layout="@layout/fragment_adm_login" />
+    <fragment
+        android:id="@+id/custLoginFragment"
+        android:name="com.yashishu.bsa.auth.CustLoginFragment"
+        android:label="fragment_cust_login"
+        tools:layout="@layout/fragment_cust_login" >
+        <action
+            android:id="@+id/action_custLoginFragment_to_custRegisterFragment"
+            app:destination="@id/custRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vndrLoginFragment"
+        android:name="com.yashishu.bsa.auth.VndrLoginFragment"
+        android:label="fragment_vndr_login"
+        tools:layout="@layout/fragment_vndr_login" >
+        <action
+            android:id="@+id/action_vndrLoginFragment_to_vndrRegisterFragment"
+            app:destination="@id/vndrRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/custRegisterFragment"
+        android:name="com.yashishu.bsa.auth.CustRegisterFragment"
+        android:label="fragment_cust_register"
+        tools:layout="@layout/fragment_cust_register" >
+        <action
+            android:id="@+id/action_custRegisterFragment_to_custLoginFragment"
+            app:destination="@id/custLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vndrRegisterFragment"
+        android:name="com.yashishu.bsa.auth.VndrRegisterFragment"
+        android:label="fragment_vndr_register"
+        tools:layout="@layout/fragment_vndr_register" >
+        <action
+            android:id="@+id/action_vndrRegisterFragment_to_vndrLoginFragment2"
+            app:destination="@id/vndrLoginFragment" />
+    </fragment>
+</navigation>
