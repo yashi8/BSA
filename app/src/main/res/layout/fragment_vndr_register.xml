@@ -12,48 +12,46 @@
         android:id="@+id/veditemail1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="255dp" />
+        android:textColor="@color/material_dynamic_neutral10"
+        app:layout_constraintEnd_toEndOf="@+id/veditname"
+        app:layout_constraintStart_toStartOf="@+id/veditname"
+        app:layout_constraintTop_toBottomOf="@+id/veditname" />
 
     <EditText
         android:id="@+id/veditcontact1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Contact No"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="454dp" />
+        app:layout_constraintEnd_toEndOf="@+id/veditpassword1"
+        app:layout_constraintStart_toStartOf="@+id/veditpassword1"
+        app:layout_constraintTop_toBottomOf="@+id/veditpassword1" />
 
     <EditText
         android:id="@+id/veditname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        android:textColor="@color/white"
+        android:textColor="@color/material_dynamic_neutral10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="166dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="108dp"
         android:layout_marginEnd="16dp"
         android:text="Registration Page"
         android:textAlignment="center"
@@ -62,18 +60,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="63dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/veditpassword1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="355dp" />
+        app:layout_constraintEnd_toEndOf="@+id/veditemail1"
+        app:layout_constraintStart_toStartOf="@+id/veditemail1"
+        app:layout_constraintTop_toBottomOf="@+id/veditemail1" />
+
+    <Button
+        android:id="@+id/btnvndrRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="@+id/veditcontact1"
+        app:layout_constraintStart_toStartOf="@+id/veditcontact1"
+        app:layout_constraintTop_toBottomOf="@+id/veditcontact1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

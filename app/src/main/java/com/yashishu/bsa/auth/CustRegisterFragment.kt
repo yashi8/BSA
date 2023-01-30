@@ -1,11 +1,14 @@
 package com.yashishu.bsa.auth
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -14,6 +17,8 @@ import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.yashishu.bsa.MainActivity
+import com.yashishu.bsa.PrefUtil
 import com.yashishu.bsa.R
 import com.yashishu.bsa.databinding.FragmentCustRegisterBinding
 
@@ -46,9 +51,9 @@ class CustRegisterFragment : Fragment() {
         binding.apply {
             val email = editemail.text.toString()
             val password = editpassword.text.toString()
-            val name= editname.text.toString()
-            val phone= editcontact.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty() && password.length >= 8 && name.isNotEmpty() && phone.length == 10 ) {
+            val name = editname.text.toString()
+            val phone = editcontact.text.toString()
+            if (email.isNotEmpty() && password.isNotEmpty() && password.length >= 8 && name.isNotEmpty() && phone.length == 10) {
                 button.isEnabled = false
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener {
@@ -88,7 +93,13 @@ class CustRegisterFragment : Fragment() {
     }
 
     private fun showDialog(message: String?) {
-        // todo add a dialog box to show this message
+        AlertDialog.Builder(requireContext()).apply {
+            setMessage(message)
+            setTitle("Register")
+            setPositiveButton("Ok") { dialog, _ -> }
+            create()
+            show()
+        }
         binding.button.isEnabled = true
     }
 
@@ -107,7 +118,9 @@ class CustRegisterFragment : Fragment() {
     }
 
     private fun navigateToHome() {
-        Toast.makeText(requireContext(), "no home", Toast.LENGTH_LONG).show()
+        PrefUtil(requireActivity()).setUserType(2)
+        startActivity(Intent(requireContext(), MainActivity::class.java))
+        requireActivity().finish()
     }
 
     private fun navigateToLogin() {

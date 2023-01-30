@@ -1,5 +1,6 @@
 package com.yashishu.bsa.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.ktx.Firebase
 import com.yashishu.bsa.databinding.FragmentCustLoginBinding
 import com.google.firebase.auth.ktx.auth
+import com.yashishu.bsa.MainActivity
+import com.yashishu.bsa.PrefUtil
 import com.yashishu.bsa.R
 
 
@@ -96,7 +99,9 @@ class CustLoginFragment : Fragment() {
     }
 
     private fun takeCustomerToDashboard() {
-        Toast.makeText(activity, "Logged In, Not yet Implemented", Toast.LENGTH_LONG).show()
+        PrefUtil(requireActivity()).setUserType(2)
+        startActivity(Intent(requireContext(), MainActivity::class.java))
+        requireActivity().finish()
     }
 
 }

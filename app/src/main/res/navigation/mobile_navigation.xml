@@ -9,7 +9,17 @@
         android:id="@+id/navigation_home"
         android:name="com.yashishu.bsa.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_adminDashboardFragment"
+            app:destination="@id/adminDashboardFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_vendorDashboardFragment"
+            app:destination="@id/vendorDashboardFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +32,23 @@
         android:name="com.yashishu.bsa.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.yashishu.bsa.ui.admin.AdminDashboardFragment"
+        android:label="fragment_admin_dashboard"
+        tools:layout="@layout/fragment_admin_dashboard" />
+    <fragment
+        android:id="@+id/vendorDashboardFragment"
+        android:name="com.yashishu.bsa.ui.vendor.VendorDashboardFragment"
+        android:label="fragment_vendor_dashboard"
+        tools:layout="@layout/fragment_vendor_dashboard" >
+        <action
+            android:id="@+id/action_vendorDashboardFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.yashishu.bsa.ui.vendor.AddProductFragment"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" />
 </navigation>

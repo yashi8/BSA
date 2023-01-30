@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.yashishu.bsa.PrefUtil
 import com.yashishu.bsa.R
 import com.yashishu.bsa.databinding.FragmentVndrLoginBinding
 
@@ -20,7 +21,6 @@ class VndrLoginFragment : Fragment() {
     private var _binding: FragmentVndrLoginBinding?=null
     private val binding get()=_binding!!
     private lateinit var auth:FirebaseAuth
-    private lateinit var viewModel: VndrLoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,19 +31,21 @@ class VndrLoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_vndr_login, container, false)
+        _binding = FragmentVndrLoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            btnvndLogin.setOnClickListener { verifyLogin() }
+            btnvndLogin.setOnClickListener { verifyLogin()
+            }
             vndRegisterLink.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_vndrRegisterFragment) }
         }
     }
 
     private fun verifyLogin() {
-        TODO("Not yet implemented")
+        // TODO("Not yet implemented")
 
         val email = binding.veditemail.text.toString()
         val pwd = binding.veditpassword.text.toString()
@@ -74,7 +76,6 @@ class VndrLoginFragment : Fragment() {
             }
         }
 
-
     }
 
     private fun updateUI(user: FirebaseUser?) {
@@ -89,20 +90,17 @@ class VndrLoginFragment : Fragment() {
         return true
     }
 
-    public override fun onStart() {
+    override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            takeVendorToDashboard();
+            takeVendorToDashboard()
         }
     }
 
     private fun takeVendorToDashboard() {
+        PrefUtil(requireActivity()).setUserType(1)
         Toast.makeText(activity, "Logged In, Not yet Implemented", Toast.LENGTH_LONG).show()
     }
-
-
-
-
 
 }
