@@ -1,5 +1,6 @@
 package com.yashishu.bsa.auth
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.yashishu.bsa.MainActivity
 import com.yashishu.bsa.PrefUtil
 import com.yashishu.bsa.R
 import com.yashishu.bsa.databinding.FragmentVndrLoginBinding
@@ -100,7 +102,8 @@ class VndrLoginFragment : Fragment() {
 
     private fun takeVendorToDashboard() {
         PrefUtil(requireActivity()).setUserType(1)
-        Toast.makeText(activity, "Logged In, Not yet Implemented", Toast.LENGTH_LONG).show()
+        startActivity(Intent(requireContext(), MainActivity::class.java))
+        requireActivity().finish()
     }
 
 }

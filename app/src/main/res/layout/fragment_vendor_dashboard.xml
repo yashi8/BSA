@@ -9,10 +9,14 @@
     tools:context=".ui.vendor.VendorDashboardFragment">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/addpro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Add Product"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="224dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

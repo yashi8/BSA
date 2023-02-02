@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.yashishu.bsa.R
+import com.yashishu.bsa.databinding.FragmentVendorDashboardBinding
 
 class VendorDashboardFragment : Fragment() {
 
@@ -15,18 +17,25 @@ class VendorDashboardFragment : Fragment() {
     }
 
     private lateinit var viewModel: VendorDashboardViewModel
-
+    private var _binding: FragmentVendorDashboardBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_vendor_dashboard, container, false)
+        _binding = FragmentVendorDashboardBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(VendorDashboardViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            addpro.setOnClickListener { gotoAddProductScreen() }
+        }
+    }
+
+    private fun gotoAddProductScreen() {
+        findNavController().navigate(R.id.action_vendorDashboardFragment_to_addProductFragment)
     }
 
 }
