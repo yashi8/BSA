@@ -17,7 +17,6 @@
         android:hint="Product Description"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Product Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -42,13 +41,12 @@
         android:id="@+id/proDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Product Description"
         android:inputType="textMultiLine"
         android:minHeight="48dp"
-        android:text="Product Description"
         app:layout_constraintEnd_toEndOf="@+id/proTitle"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/proTitle"
@@ -58,35 +56,44 @@
         android:id="@+id/proCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Product Cost"
         android:inputType="number"
         android:minHeight="48dp"
-        android:text="Product Cost"
         app:layout_constraintEnd_toEndOf="@+id/proDesc"
         app:layout_constraintStart_toStartOf="@+id/proDesc"
         app:layout_constraintTop_toBottomOf="@+id/proDesc" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="52dp"
         android:text="Add"
+        app:icon="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/selectImg"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imgProduct"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/select"
+        app:layout_constraintEnd_toEndOf="@+id/proCost"
+        app:layout_constraintStart_toStartOf="@+id/proCost"
+        app:layout_constraintTop_toBottomOf="@+id/proCost" />
+
+    <Spinner
+        android:id="@+id/editSpinner"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Select"
-        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/proCost"
-        app:layout_constraintVertical_bias="0.444" />
+        android:layout_marginTop="16dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="@+id/imgProduct"
+        app:layout_constraintStart_toStartOf="@+id/imgProduct"
+        app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
 </androidx.constraintlayout.widget.ConstraintLayout>

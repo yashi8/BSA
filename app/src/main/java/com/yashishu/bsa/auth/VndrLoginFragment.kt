@@ -42,8 +42,13 @@ class VndrLoginFragment : Fragment() {
         binding.apply {
             btnvndLogin.setOnClickListener { verifyLogin()
             }
-            vndRegisterLink.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_vndrRegisterFragment) }
+            vndRegisterLink.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_vndrRegisterFragment)
+            }
+
+
         }
+
+
     }
 
     private fun verifyLogin() {

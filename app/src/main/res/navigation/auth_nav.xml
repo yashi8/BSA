@@ -33,6 +33,12 @@
         <action
             android:id="@+id/action_custLoginFragment_to_custRegisterFragment"
             app:destination="@id/custRegisterFragment" />
+        <action
+            android:id="@+id/action_custLoginFragment_to_googleLoginFragment"
+            app:destination="@id/googleLoginFragment" />
+        <action
+            android:id="@+id/action_custLoginFragment_to_phoneLogin"
+            app:destination="@id/phoneLogin" />
     </fragment>
     <fragment
         android:id="@+id/vndrLoginFragment"
@@ -61,4 +67,14 @@
             android:id="@+id/action_vndrRegisterFragment_to_vndrLoginFragment2"
             app:destination="@id/vndrLoginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/phoneLogin"
+        android:name="com.yashishu.bsa.PhoneLogin"
+        android:label="fragment_phone_login"
+        tools:layout="@layout/fragment_phone_login" />
+    <fragment
+        android:id="@+id/googleLoginFragment"
+        android:name="com.yashishu.bsa.GoogleLoginFragment"
+        android:label="fragment_google_login2"
+        tools:layout="@layout/fragment_google_login2" />
 </navigation>
