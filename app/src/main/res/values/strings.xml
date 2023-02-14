@@ -10,7 +10,13 @@
     <string name="permission_granted">Permission is granted.</string>
     <string-array name="products">
         <item>Flower</item>
-        <item>Seed</item>
-
+        <item>Indoor Plants</item>
+        <item>Sapling</item>
+        <item>Outdoor Plants</item>
+        <item>Seeds</item>
+        <item>Fertilizers/Manures</item>
+        <item>Insecticides/Drugs</item>
+        <item>Soil</item>
+        <item>Accessories and Tools</item>
     </string-array>
 </resources>

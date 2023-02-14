@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import coil.load
@@ -42,6 +43,7 @@ class AddProductFragment : Fragment() {
     private var isImgSelected = false
     private  var downloadUri: Uri? = null
 
+
     companion object {
         const val REQUEST_IMAGE_GET = 12
     }
@@ -70,9 +72,13 @@ class AddProductFragment : Fragment() {
                 selectImage()
                 true
             }
+
         }
 
     }
+
+
+
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -93,6 +99,7 @@ class AddProductFragment : Fragment() {
         cursor?.close()
         return fileName
     }
+
 
     private fun uploadToFirebase(imageUri: Uri?) {
         val storageRef = storage.reference
