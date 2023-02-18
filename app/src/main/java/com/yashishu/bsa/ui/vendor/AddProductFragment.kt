@@ -1,19 +1,18 @@
 package com.yashishu.bsa.ui.vendor
 
-import android.Manifest.permission
 import android.Manifest.permission.*
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
+
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Spinner
+import android.widget.ArrayAdapter
+import android.widget.SpinnerAdapter
+
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import coil.load
@@ -63,6 +62,9 @@ class AddProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = ArrayAdapter.createFromResource(requireActivity(),R.array.products,android.R.layout.simple_list_item_1)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.editSpinner.adapter = adapter
         binding.apply {
             btnAdd.setOnClickListener { addVendorProduct() }
             if (!isImgSelected) {
@@ -72,6 +74,7 @@ class AddProductFragment : Fragment() {
                 selectImage()
                 true
             }
+
 
         }
 
@@ -142,8 +145,11 @@ class AddProductFragment : Fragment() {
         binding.apply {
             val name = proTitle.text.toString()
             val desc = proDesc.text.toString()
+            val selectedCategory = binding.editSpinner.selectedItem.toString()
+
             val cost = proCost.text.toString() //doubt
-            if (name.isNotEmpty() && desc.isNotEmpty() && cost.isNotEmpty() && downloadUri != null) {
+            if (name.isNotEmpty() && desc.isNotEmpty() && cost.isNotEmpty() && downloadUri != null && selectedCategory.isNotEmpty()) {
+
                 btnAdd.isEnabled = false
             }
         }

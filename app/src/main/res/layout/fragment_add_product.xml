@@ -92,6 +92,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:entries="@array/products"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="@+id/imgProduct"
         app:layout_constraintStart_toStartOf="@+id/imgProduct"

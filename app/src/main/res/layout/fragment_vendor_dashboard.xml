@@ -14,12 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Add Product"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintEnd_toEndOf="@+id/orders"
+        app:layout_constraintStart_toStartOf="@+id/orders"
+        app:layout_constraintTop_toBottomOf="@+id/orders" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/prolist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="211dp"
@@ -29,12 +29,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/orders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Orders"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintEnd_toEndOf="@+id/prolist"
+        app:layout_constraintStart_toStartOf="@+id/prolist"
+        app:layout_constraintTop_toBottomOf="@+id/prolist" />
+
+    <Button
+        android:id="@+id/btnlogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="@+id/addpro"
+        app:layout_constraintStart_toStartOf="@+id/addpro"
+        app:layout_constraintTop_toBottomOf="@+id/addpro" />
 </androidx.constraintlayout.widget.ConstraintLayout>
