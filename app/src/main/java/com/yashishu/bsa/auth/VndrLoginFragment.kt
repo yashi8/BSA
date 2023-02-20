@@ -40,11 +40,10 @@ class VndrLoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            btnvndLogin.setOnClickListener { verifyLogin()
-            }
-            vndRegisterLink.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_vndrRegisterFragment)
-            }
-
+            btnvndLogin.setOnClickListener { verifyLogin() }
+            vndRegisterLink.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_vndrRegisterFragment) }
+            imgPhone2.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_phoneLogin) }
+            imgGoogle2.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_googleLoginFragment) }
 
         }
 

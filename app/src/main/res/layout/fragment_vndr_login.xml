@@ -9,22 +9,24 @@
     tools:context=".auth.VndrLoginFragment" >
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/googleicon"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:layout_editor_absoluteX="153dp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgGoogle2"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="144dp"
+        android:src="@drawable/googleicon"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPhone2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgPhone2" />
+
+    <ImageView
+        android:id="@+id/imgPhone2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/contact"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:layout_editor_absoluteX="218dp" />
+        app:layout_constraintStart_toEndOf="@+id/imgGoogle2"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView"
@@ -49,6 +51,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textColor="@color/material_dynamic_neutral10"
         app:layout_constraintEnd_toEndOf="@+id/veditemail"
         app:layout_constraintStart_toStartOf="@+id/veditemail"
@@ -84,6 +87,7 @@
         android:ems="10"
         android:hint="Enter Your Email"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:textColor="@color/material_dynamic_neutral10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,9 +97,10 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:text="Login Via"
         app:layout_constraintEnd_toEndOf="@+id/vndRegisterLink"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="@+id/vndRegisterLink"
         app:layout_constraintTop_toBottomOf="@+id/vndRegisterLink" />
 

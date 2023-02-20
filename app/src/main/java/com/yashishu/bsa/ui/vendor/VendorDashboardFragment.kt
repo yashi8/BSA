@@ -21,8 +21,7 @@ class VendorDashboardFragment : Fragment() {
     private lateinit var viewModel: VendorDashboardViewModel
     private var _binding: FragmentVendorDashboardBinding? = null
     private val binding get() = _binding!!
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,11 +34,7 @@ class VendorDashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             addpro.setOnClickListener { gotoAddProductScreen() }
-            btnlogout.setOnClickListener {
-                auth.signOut()
-                startActivity()
 
-            }
         }
     }
 

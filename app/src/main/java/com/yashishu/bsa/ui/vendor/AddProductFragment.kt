@@ -11,10 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.SpinnerAdapter
+import android.widget.Toast
 
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.google.android.material.snackbar.Snackbar
@@ -29,6 +30,7 @@ import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.annotations.AfterPermissionGranted
 import com.yashishu.bsa.R
 import com.yashishu.bsa.databinding.FragmentAddProductBinding
+import com.yashishu.bsa.models.Product
 
 class AddProductFragment : Fragment() {
 
@@ -40,11 +42,12 @@ class AddProductFragment : Fragment() {
 
     private var isImgUploaded = false
     private var isImgSelected = false
-    private  var downloadUri: Uri? = null
+    private var downloadUri: Uri? = null
 
 
     companion object {
         const val REQUEST_IMAGE_GET = 12
+        const val COLL_PRODUCT = "products"
     }
 
 
@@ -62,7 +65,11 @@ class AddProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = ArrayAdapter.createFromResource(requireActivity(),R.array.products,android.R.layout.simple_list_item_1)
+        val adapter = ArrayAdapter.createFromResource(
+            requireActivity(),
+            R.array.products,
+            android.R.layout.simple_list_item_1
+        )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.editSpinner.adapter = adapter
         binding.apply {
@@ -79,8 +86,6 @@ class AddProductFragment : Fragment() {
         }
 
     }
-
-
 
 
     private val getContent =
@@ -132,8 +137,26 @@ class AddProductFragment : Fragment() {
 
     }
 
-    private fun saveToFireStore(downloadUri: Uri?) {
-
+    private fun saveToFireStore(
+        name: String,
+        desc: String,
+        selectedCategory: String,
+        cost: String
+    ) {
+        db.collection(COLL_PRODUCT).add(
+            Product(
+                name,
+                desc,
+                cost,
+                downloadUri.toString(),
+                auth.currentUser!!.uid,
+                selectedCategory
+            )
+        ).addOnFailureListener {
+            Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
+        }.addOnSuccessListener {
+            findNavController().navigate(R.id.action_addProductFragment_to_vendorDashboardFragment  )
+        }
     }
 
     private fun showSnackBar(view: View, msg: String) {
@@ -151,6 +174,9 @@ class AddProductFragment : Fragment() {
             if (name.isNotEmpty() && desc.isNotEmpty() && cost.isNotEmpty() && downloadUri != null && selectedCategory.isNotEmpty()) {
 
                 btnAdd.isEnabled = false
+                if (isImgUploaded) {
+                    saveToFireStore(name, desc, selectedCategory, cost)
+                }
             }
         }
     }

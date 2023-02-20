@@ -43,6 +43,7 @@ class CustLoginFragment : Fragment() {
             btnLogin.setOnClickListener { verifyLogin() }
             textRegisterLink.setOnClickListener { findNavController().navigate(R.id.action_custLoginFragment_to_custRegisterFragment) }
             imgGoogle.setOnClickListener { findNavController().navigate(R.id.action_custLoginFragment_to_googleLoginFragment) }
+            imgPhone.setOnClickListener { findNavController().navigate(R.id.action_custLoginFragment_to_phoneLogin) }
         }
     }
 

@@ -48,6 +48,12 @@
         <action
             android:id="@+id/action_vndrLoginFragment_to_vndrRegisterFragment"
             app:destination="@id/vndrRegisterFragment" />
+        <action
+            android:id="@+id/action_vndrLoginFragment_to_phoneLogin"
+            app:destination="@id/phoneLogin" />
+        <action
+            android:id="@+id/action_vndrLoginFragment_to_googleLoginFragment"
+            app:destination="@id/googleLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/custRegisterFragment"
@@ -69,12 +75,12 @@
     </fragment>
     <fragment
         android:id="@+id/phoneLogin"
-        android:name="com.yashishu.bsa.PhoneLogin"
+        android:name="com.yashishu.bsa.auth.PhoneAuthFragment"
         android:label="fragment_phone_login"
         tools:layout="@layout/fragment_phone_login" />
     <fragment
         android:id="@+id/googleLoginFragment"
-        android:name="com.yashishu.bsa.GoogleLoginFragment"
+        android:name="com.yashishu.bsa.auth.GoogleLoginFragment"
         android:label="fragment_google_login2"
         tools:layout="@layout/fragment_google_login2" />
 </navigation>
