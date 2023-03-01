@@ -138,16 +138,16 @@ class AddProductFragment : Fragment() {
     }
 
     private fun saveToFireStore(
-        name: String,
+        title: String,
         desc: String,
         selectedCategory: String,
-        cost: String
+        price: String
     ) {
         db.collection(COLL_PRODUCT).add(
             Product(
-                name,
+                title,
                 desc,
-                cost,
+                price,
                 downloadUri.toString(),
                 auth.currentUser!!.uid,
                 selectedCategory
@@ -166,16 +166,16 @@ class AddProductFragment : Fragment() {
 
     private fun addVendorProduct() {
         binding.apply {
-            val name = proTitle.text.toString()
-            val desc = proDesc.text.toString()
+            val title = proTitle.text.toString().trim()
+            val desc = proDesc.text.toString().trim()
             val selectedCategory = binding.editSpinner.selectedItem.toString()
 
-            val cost = proCost.text.toString() //doubt
-            if (name.isNotEmpty() && desc.isNotEmpty() && cost.isNotEmpty() && downloadUri != null && selectedCategory.isNotEmpty()) {
+            val price = proCost.text.toString().trim()
+            if (title.isNotEmpty() && desc.isNotEmpty() && price.isNotEmpty() && downloadUri != null && selectedCategory.isNotEmpty()) {
 
                 btnAdd.isEnabled = false
                 if (isImgUploaded) {
-                    saveToFireStore(name, desc, selectedCategory, cost)
+                    saveToFireStore(title, desc, selectedCategory, price)
                 }
             }
         }

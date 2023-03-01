@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yashishu.bsa.ui.vendor.VendorDashboardViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/frameLayout8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Add Product"
-        app:layout_constraintEnd_toEndOf="@+id/orders"
-        app:layout_constraintStart_toStartOf="@+id/orders"
-        app:layout_constraintTop_toBottomOf="@+id/orders" />
+        app:layout_constraintEnd_toEndOf="@+id/vendorOrders"
+        app:layout_constraintStart_toStartOf="@+id/vendorOrders"
+        app:layout_constraintTop_toBottomOf="@+id/vendorOrders" />
 
     <Button
         android:id="@+id/prolist"
@@ -29,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/orders"
+        android:id="@+id/vendorOrders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -39,3 +48,4 @@
         app:layout_constraintTop_toBottomOf="@+id/prolist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

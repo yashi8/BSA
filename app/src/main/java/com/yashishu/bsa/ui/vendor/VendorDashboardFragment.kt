@@ -1,15 +1,18 @@
 package com.yashishu.bsa.ui.vendor
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.yashishu.bsa.R
+import com.yashishu.bsa.adapter.ProductAdapter
 import com.yashishu.bsa.databinding.FragmentVendorDashboardBinding
 
 class VendorDashboardFragment : Fragment() {
@@ -18,15 +21,23 @@ class VendorDashboardFragment : Fragment() {
         fun newInstance() = VendorDashboardFragment()
     }
 
-    private lateinit var viewModel: VendorDashboardViewModel
+    private val viewModel: VendorDashboardViewModel by viewModels()
     private var _binding: FragmentVendorDashboardBinding? = null
     private val binding get() = _binding!!
+    private lateinit var db: FirebaseFirestore
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        db = Firebase.firestore
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentVendorDashboardBinding.inflate(inflater, container, false)
+    ): View {
+
+        _binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_vendor_dashboard, container, false)
         return binding.root
     }
 
@@ -34,8 +45,18 @@ class VendorDashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             addpro.setOnClickListener { gotoAddProductScreen() }
-
+            prolist.setOnClickListener { gotoProductListScreen() }
+            viewModel = viewModel
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun gotoProductListScreen() {
+        findNavController().navigate(R.id.action_vendorDashboardFragment_to_productListFragment)
     }
 
     private fun gotoAddProductScreen() {

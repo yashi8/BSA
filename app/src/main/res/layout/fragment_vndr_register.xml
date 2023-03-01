@@ -8,6 +8,17 @@
     android:background="@drawable/reg"
     tools:context=".auth.VndrRegisterFragment" >
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnvndrRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/veditcontact1"
+        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintStart_toStartOf="@+id/veditcontact1" />
+
     <EditText
         android:id="@+id/veditemail1"
         android:layout_width="wrap_content"
@@ -16,6 +27,7 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="@color/material_dynamic_neutral10"
         app:layout_constraintEnd_toEndOf="@+id/veditname"
         app:layout_constraintStart_toStartOf="@+id/veditname"
@@ -25,13 +37,14 @@
         android:id="@+id/veditcontact1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Contact No"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/veditpassword1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/veditpassword1"
-        app:layout_constraintTop_toBottomOf="@+id/veditpassword1" />
+        tools:layout_editor_absoluteY="565dp" />
 
     <EditText
         android:id="@+id/veditname"
@@ -41,6 +54,7 @@
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="@color/material_dynamic_neutral10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,19 +82,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Create Password"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/veditemail1"
         app:layout_constraintStart_toStartOf="@+id/veditemail1"
         app:layout_constraintTop_toBottomOf="@+id/veditemail1" />
 
-    <Button
-        android:id="@+id/btnvndrRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/veditcontact1"
-        app:layout_constraintStart_toStartOf="@+id/veditcontact1"
-        app:layout_constraintTop_toBottomOf="@+id/veditcontact1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

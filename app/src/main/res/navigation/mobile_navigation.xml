@@ -63,20 +63,32 @@
     </fragment>
     <fragment
         android:id="@+id/productListFragment"
-        android:name="com.yashishu.bsa.ProductListFragment"
+        android:name="com.yashishu.bsa.ui.vendor.ProductListFragment"
         android:label="fragment_product_list2"
-        tools:layout="@layout/fragment_product_list2" >
+        tools:layout="@layout/fragment_product_list" >
         <action
             android:id="@+id/action_productListFragment_to_vendorDashboardFragment"
             app:destination="@id/vendorDashboardFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_viewProducts"
+            app:destination="@id/viewProducts" />
     </fragment>
     <fragment
         android:id="@+id/ordersFragment"
-        android:name="com.yashishu.bsa.OrdersFragment"
+        android:name="com.yashishu.bsa.ui.vendor.OrdersFragment"
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" >
         <action
             android:id="@+id/action_ordersFragment_to_vendorDashboardFragment"
             app:destination="@id/vendorDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewProducts"
+        android:name="com.yashishu.bsa.ui.vendor.ViewProductsFragment"
+        android:label="fragment_view_products"
+        tools:layout="@layout/fragment_view_products" >
+        <action
+            android:id="@+id/action_viewProducts_to_productListFragment"
+            app:destination="@id/productListFragment" />
     </fragment>
 </navigation>

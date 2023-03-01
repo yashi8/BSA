@@ -2,47 +2,47 @@ package com.yashishu.bsa.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.yashishu.bsa.R
+import com.yashishu.bsa.databinding.ProductCard1Binding
 import com.yashishu.bsa.models.Product
 
 class ProductAdapter(
-    val context: Context,
-    val layout: Int,
-    val products: List<Product>,
-
-    ) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
-    class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
-        val textProductTitle = view.findViewById<TextView>(R.id.textProductTitle)
-        val imgProductThumb= view.findViewById<ImageView>(R.id.imgProductThumb)
-
-
+    private val context: Context
+) : ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDiffUtil()) {
+    class ViewHolder(
+        private val binding: ProductCard1Binding
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
-            textProductTitle.text= product.title
-            imgProductThumb.load(product.img_url)
-
+            binding.product = product
+            binding.executePendingBindings()
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view=LayoutInflater.from(context).inflate(layout,parent,false)
-        return ViewHolder(view)
+        val binding = ProductCard1Binding.inflate(
+            LayoutInflater.from(context),
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(products[position])
-
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount()= products.size
+}
 
+class ProductDiffUtil : DiffUtil.ItemCallback<Product>() {
+    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        return oldItem == newItem
+    }
 
+    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+        return oldItem.title == newItem.title
+    }
 }
 
