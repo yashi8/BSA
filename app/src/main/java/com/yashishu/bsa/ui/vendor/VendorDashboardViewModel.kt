@@ -13,6 +13,9 @@ class VendorDashboardViewModel : ViewModel() {
     private val _products = MutableLiveData<List<Product>>()
     val products: LiveData<List<Product>> = _products
 
+    private val _selectedProduct = MutableLiveData<Product>()
+    val selectedProduct: LiveData<Product> = _selectedProduct
+
     fun getProducts(db: FirebaseFirestore, vendorId: String) {
         loadProducts(db, vendorId)
     }
@@ -27,6 +30,11 @@ class VendorDashboardViewModel : ViewModel() {
             Log.d("VendorDashboardViewModel", "Products loaded ${prds.size}")
         }
     }
+
+    fun setProduct(product: Product) {
+        _selectedProduct.value=product
+    }
+
 
     companion object {
         const val COL_PRODUCTS = "products"

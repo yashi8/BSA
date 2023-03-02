@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,7 +27,7 @@ class ProductListFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var storage: FirebaseStorage
-    private val viewModel: VendorDashboardViewModel by viewModels()
+    private val viewModel: VendorDashboardViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +45,11 @@ class ProductListFragment : Fragment() {
         auth.currentUser?.let { viewModel.getProducts(db, it.uid) } // fetch data only
         viewModel.products.observe(viewLifecycleOwner) { products ->
             if (products.isNotEmpty()) {
-                binding.productRecyclerView.adapter = ProductAdapter(requireActivity())
+                binding.productRecyclerView.adapter = ProductAdapter(requireActivity()){
+                    viewModel.setProduct(it)
+                    findNavController().navigate(R.id.action_productListFragment_to_viewProducts)
+                }
+
                 (binding.productRecyclerView.adapter as ProductAdapter).submitList(products)
             } else {
                 binding.productRecyclerView.visibility = View.GONE

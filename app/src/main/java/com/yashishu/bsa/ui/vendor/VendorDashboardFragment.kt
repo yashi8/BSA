@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,7 +22,7 @@ class VendorDashboardFragment : Fragment() {
         fun newInstance() = VendorDashboardFragment()
     }
 
-    private val viewModel: VendorDashboardViewModel by viewModels()
+    private val viewModel: VendorDashboardViewModel by activityViewModels()
     private var _binding: FragmentVendorDashboardBinding? = null
     private val binding get() = _binding!!
     private lateinit var db: FirebaseFirestore

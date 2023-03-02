@@ -6,9 +6,12 @@ import androidx.databinding.BindingAdapter
 import coil.load
 
 @BindingAdapter("load")
-fun ImageView.loadImage(url: String) {
-    load(url)
+fun ImageView.loadImage(url: String?) {
+    url.let {
+        load(it)
+    }
 }
+
 @BindingAdapter("set_visibility")
 fun ProgressBar.setVisibility(isVisible: Boolean) {
     visibility = if (isVisible) {

@@ -10,8 +10,9 @@ import com.yashishu.bsa.databinding.ProductCard1Binding
 import com.yashishu.bsa.models.Product
 
 class ProductAdapter(
-    private val context: Context
-) : ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDiffUtil()) {
+    private val context: Context,
+    private val listener: (Product) -> Unit
+    ) : ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDiffUtil()) {
     class ViewHolder(
         private val binding: ProductCard1Binding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -32,6 +33,8 @@ class ProductAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.setOnClickListener { listener(getItem(position)) }
+
     }
 
 }
