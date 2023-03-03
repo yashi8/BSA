@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Green">#053711</color>
+    <color name="creame">#FFE0B2</color>
+    <color name="lightgreen">#BBDAA3</color>
+    <color name="btncolor">#DCEDC8</color>
+    <color name="lgreen">#296838</color>
+    <color name="bk">#FFE0B2</color>
+    <color name="lb">#E1CAB2</color>
+    <color name="mm">#98A897</color>
+    <color name="ico">#CFFAD1</color>
+    <color name="dark">#1A331E</color>
 </resources>

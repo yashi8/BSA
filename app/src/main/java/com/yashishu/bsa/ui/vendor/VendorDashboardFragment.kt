@@ -1,5 +1,4 @@
 package com.yashishu.bsa.ui.vendor
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +6,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.yashishu.bsa.R
-import com.yashishu.bsa.adapter.ProductAdapter
 import com.yashishu.bsa.databinding.FragmentVendorDashboardBinding
+import com.yashishu.bsa.ui.vendor.VendorDashboardViewModel
 
 class VendorDashboardFragment : Fragment() {
 
@@ -47,14 +45,20 @@ class VendorDashboardFragment : Fragment() {
         binding.apply {
             addpro.setOnClickListener { gotoAddProductScreen() }
             prolist.setOnClickListener { gotoProductListScreen() }
+            btnCustmerSupport.setOnClickListener{ gotoSupportScreen()}
+            vendorOrders.setOnClickListener{ gotoOrdersScreen()}
             viewModel = viewModel
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun gotoOrdersScreen() {
+        findNavController().navigate(R.id.action_vendorDashboardFragment_to_ordersFragment)
     }
+
+    private fun gotoSupportScreen() {
+        findNavController().navigate(R.id.action_vendorDashboardFragment_to_customerSupport)
+    }
+
 
     private fun gotoProductListScreen() {
         findNavController().navigate(R.id.action_vendorDashboardFragment_to_productListFragment)
@@ -62,6 +66,12 @@ class VendorDashboardFragment : Fragment() {
 
     private fun gotoAddProductScreen() {
         findNavController().navigate(R.id.action_vendorDashboardFragment_to_addProductFragment)
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

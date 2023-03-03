@@ -83,4 +83,13 @@
         android:name="com.yashishu.bsa.auth.GoogleLoginFragment"
         android:label="fragment_google_login2"
         tools:layout="@layout/fragment_google_login2" />
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.yashishu.bsa.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_loginSelectorFragment"
+            app:destination="@id/loginSelectorFragment" />
+    </fragment>
 </navigation>

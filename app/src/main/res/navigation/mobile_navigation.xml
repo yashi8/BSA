@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_vendorDashboardFragment_to_ordersFragment"
             app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_vendorDashboardFragment_to_customerSupport"
+            app:destination="@id/customerSupport" />
     </fragment>
     <fragment
         android:id="@+id/addProductFragment"
@@ -90,5 +93,14 @@
         <action
             android:id="@+id/action_viewProducts_to_productListFragment"
             app:destination="@id/productListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerSupport"
+        android:name="com.yashishu.bsa.ui.CustomerSupport"
+        android:label="fragment_customer_support"
+        tools:layout="@layout/fragment_customer_support" >
+        <action
+            android:id="@+id/action_customerSupport_to_vendorDashboardFragment"
+            app:destination="@id/vendorDashboardFragment" />
     </fragment>
 </navigation>

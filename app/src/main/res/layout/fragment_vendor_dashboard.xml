@@ -14,38 +14,60 @@
     android:id="@+id/frameLayout8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/addproback"
+    android:background="@drawable/dashboards"
     tools:context=".ui.vendor.VendorDashboardFragment">
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnCustmerSupport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="252dp"
+        android:text="Customer Support"
+        app:backgroundTint="@color/lightgreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/prolist"
+        app:layout_constraintStart_toStartOf="@+id/prolist"
+        app:layout_constraintTop_toBottomOf="@+id/prolist" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/addpro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Add Product"
+        app:backgroundTint="@color/lightgreen"
         app:layout_constraintEnd_toEndOf="@+id/vendorOrders"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/vendorOrders"
         app:layout_constraintTop_toBottomOf="@+id/vendorOrders" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/prolist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="211dp"
+        android:layout_marginTop="24dp"
         android:text="Product List"
+        app:backgroundTint="@color/lightgreen"
+        app:layout_constraintEnd_toEndOf="@+id/addpro"
+        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintStart_toStartOf="@+id/addpro"
+        app:layout_constraintTop_toBottomOf="@+id/addpro" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/vendorOrders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="199dp"
+        android:text="Orders"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/vendorOrders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Orders"
-        app:layout_constraintEnd_toEndOf="@+id/prolist"
-        app:layout_constraintStart_toStartOf="@+id/prolist"
-        app:layout_constraintTop_toBottomOf="@+id/prolist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

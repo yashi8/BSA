@@ -10,107 +10,130 @@
             name="vm"
             type="com.yashishu.bsa.ui.vendor.AddProductFragment" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/container_box"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/addproback"
-    tools:context=".ui.vendor.AddProductFragment">
 
-    <EditText
-        android:id="@+id/proTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Product Name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/addpro"
+        tools:context=".ui.vendor.AddProductFragment">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="Add Product"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/proCost2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Product Cost"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColorHint="#616161"
+            app:layout_constraintEnd_toEndOf="@+id/proDesc"
+            app:layout_constraintStart_toStartOf="@+id/proDesc"
+            app:layout_constraintTop_toBottomOf="@+id/proDesc" />
 
-    <EditText
-        android:id="@+id/proDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Product Description"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/proTitle"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/proTitle"
-        app:layout_constraintTop_toBottomOf="@+id/proTitle" />
+        <EditText
+            android:id="@+id/proTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:ems="10"
+            android:hint="Product Name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#616161"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <EditText
-        android:id="@+id/proCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Product Cost"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/proDesc"
-        app:layout_constraintStart_toStartOf="@+id/proDesc"
-        app:layout_constraintTop_toBottomOf="@+id/proDesc" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:text="Add Product"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/Green"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:text="Add"
-        app:icon="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/proDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Product Description"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/proTitle"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/proTitle"
+            app:layout_constraintTop_toBottomOf="@+id/proTitle" />
 
-    <ImageView
-        android:id="@+id/imgProduct"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/select"
-        app:layout_constraintEnd_toEndOf="@+id/proCost"
-        app:layout_constraintStart_toStartOf="@+id/proCost"
-        app:layout_constraintTop_toBottomOf="@+id/proCost" />
+        <EditText
+            android:id="@+id/proCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Product Cost"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColorHint="#616161"
+            app:layout_constraintEnd_toEndOf="@+id/proDesc"
+            app:layout_constraintStart_toStartOf="@+id/proDesc"
+            app:layout_constraintTop_toBottomOf="@+id/proDesc" />
 
-    <Spinner
-        android:id="@+id/editSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:entries="@array/products"
-        android:minHeight="48dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="@+id/imgProduct"
-        app:layout_constraintStart_toStartOf="@+id/imgProduct"
-        app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="84dp"
+            android:text="Add"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/dark"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <!--<ProgressBar
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/select"
+            app:layout_constraintEnd_toEndOf="@+id/proCost"
+            app:layout_constraintStart_toStartOf="@+id/proCost"
+            app:layout_constraintTop_toBottomOf="@+id/proCost"
+            android:contentDescription="TODO" />
+
+        <Spinner
+            android:id="@+id/editSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:entries="@array/products"
+            android:focusable="auto"
+            android:minHeight="48dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="@+id/imgProduct"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imgProduct"
+            app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
+
+        <!--<ProgressBar
         android:id="@+id/pbState"
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
         android:layout_width="wrap_content"
@@ -123,5 +146,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" /> -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
