@@ -1,4 +1,4 @@
-package com.yashishu.bsa.ui.home
+package com.yashishu.bsa.ui.user
 
 import android.os.Bundle
 import android.view.LayoutInflater

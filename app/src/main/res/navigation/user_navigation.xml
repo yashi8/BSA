@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@id/user_nav_home">
+
+    <fragment
+        android:id="@+id/user_nav_dashboard"
+        android:name="com.yashishu.bsa.ui.user.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/user_nav_home"
+        android:name="com.yashishu.bsa.ui.user.UserHomeFragment"
+        android:label="fragment_user_home"
+        tools:layout="@layout/fragment_user_home" />
+    <fragment
+        android:id="@+id/user_nav_product"
+        android:name="com.yashishu.bsa.ui.user.ProductFragment"
+        android:label="ProductFragment" />
+</navigation>

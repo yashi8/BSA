@@ -8,6 +8,8 @@
     <string name="permission_required">Storage access is required to select image from gallery.</string>
     <string name="ok">OK</string>
     <string name="permission_granted">Permission is granted.</string>
+    <string name="title_orders">Order</string>
+    <string name="title_product">Products</string>
     <string-array name="products" translatable="true">
         <item>Flower</item>
         <item>Indoor and Outdoor Both</item>

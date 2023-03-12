@@ -26,44 +26,36 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val userType = PrefUtil(this).getUserType()
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        var appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_vendor_home,
-                R.id.navigation_vendor_dashboard,
-                R.id.navigation_notifications
-            )
-        )
-        when (PrefUtil(this).getUserType()) {
-            0 -> {
-                appBarConfiguration = AppBarConfiguration(
-                    setOf(
 
-                        R.id.navigation_notifications
-                    )
-                )
+        when (userType) {
+            0 -> {
+                navView.menu.clear()
+                navView.inflateMenu(R.menu.admin_bottom_nav_menu)
+                navController.setGraph(R.navigation.admin_navigation)
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.admin_nav_dashboard))
+                setupActionBarWithNavController(navController, appBarConfiguration)
             }
             1 -> {
-                appBarConfiguration = AppBarConfiguration(
-                    setOf(
-                        R.id.navigation_vendor_home,
-                        R.id.navigation_vendor_dashboard,
-                        R.id.navigation_vendor_product,
-                        R.id.navigation_notifications
-                    )
-                )
+                navView.menu.clear()
+                navView.inflateMenu(R.menu.vendor_bottom_nav_menu)
+                navController.setGraph(R.navigation.vendor_navigation)
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.vendor_nav_dashboard, R.id.vendor_nav_product, R.id.vendor_nav_orders))
+                setupActionBarWithNavController(navController, appBarConfiguration)
             }
             2 -> {
-                appBarConfiguration = AppBarConfiguration(
-                    setOf(
-                        R.id.navigation_notifications
-                    )
-                )
+                navView.menu.clear()
+                navView.inflateMenu(R.menu.user_bottom_nav_menu)
+                navController.setGraph(R.navigation.user_navigation)
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.user_nav_home, R.id.user_nav_dashboard))
+                setupActionBarWithNavController(navController, appBarConfiguration)
             }
         }
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+
+
         navView.setupWithNavController(navController)
     }
 

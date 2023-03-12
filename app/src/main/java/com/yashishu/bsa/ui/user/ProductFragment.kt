@@ -1,4 +1,4 @@
-package com.yashishu.bsa.ui.vendor
+package com.yashishu.bsa.ui.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,16 +16,17 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.yashishu.bsa.R
 import com.yashishu.bsa.adapter.ProductAdapter
-import com.yashishu.bsa.databinding.FragmentProductListBinding
-import com.yashishu.bsa.ui.vendor.AddProductFragment.Companion.COLL_PRODUCT
+import com.yashishu.bsa.databinding.FragmentProductBinding
 
-class ProductListFragment : Fragment() {
-    private var _binding: FragmentProductListBinding? = null
+
+class ProductFragment : Fragment() {
+
+    private var _binding: FragmentProductBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var storage: FirebaseStorage
-    private val viewModel: VendorDashboardViewModel by activityViewModels()
+    private val viewModel: ProductViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,15 +37,25 @@ class ProductListFragment : Fragment() {
     }
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        auth.currentUser?.let { viewModel.getProducts(db, it.uid) } // fetch data only
+        viewModel.getProducts(db)
         viewModel.products.observe(viewLifecycleOwner) { products ->
             if (products.isNotEmpty()) {
-                binding.productRecyclerView.adapter = ProductAdapter(requireActivity()){
+                binding.productRecyclerView.adapter = ProductAdapter(requireActivity()) {
                     viewModel.setProduct(it)
-                    findNavController().navigate(R.id.action_productListFragment_to_viewProductsFragment)
+                    // todo display product details fragment
                 }
 
                 (binding.productRecyclerView.adapter as ProductAdapter).submitList(products)
@@ -58,19 +67,8 @@ class ProductListFragment : Fragment() {
             }
         }
         binding.swipeRefreshLayout.setOnRefreshListener {
-            auth.currentUser?.uid?.let { viewModel.getProducts(db, it) }
+            auth.currentUser?.uid?.let { viewModel.getProducts(db) }
         }
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_product_list, container, false)
-        return binding.root
-    }
-
 
 }

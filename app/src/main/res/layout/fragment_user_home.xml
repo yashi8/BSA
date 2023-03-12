@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout13"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.home.UserHomeFragment">
+    tools:context=".ui.user.UserHomeFragment">
 
     <com.aemerse.slider.ImageCarousel
         android:id="@+id/carousel"

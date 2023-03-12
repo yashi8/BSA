@@ -34,39 +34,21 @@ class VendorDashboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_vendor_dashboard, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.apply {
-//            addpro.setOnClickListener { gotoAddProductScreen() }
-//            prolist.setOnClickListener { gotoProductListScreen() }
-            btnCustmerSupport.setOnClickListener{ gotoSupportScreen()}
-            vendorOrders.setOnClickListener{ gotoOrdersScreen()}
-            viewModel = viewModel
-        }
-    }
 
-    private fun gotoOrdersScreen() {
-        findNavController().navigate(R.id.action_navigation_vendor_dashboard_to_ordersFragment)
-    }
-
-    private fun gotoSupportScreen() {
-        findNavController().navigate(R.id.action_navigation_vendor_dashboard_to_customerSupport)
     }
 
 
-//    private fun gotoProductListScreen() {
-//        findNavController().navigate(R.id.action_vendorDashboardFragment_to_productListFragment)
-//    }
 
-//    private fun gotoAddProductScreen() {
-//        findNavController().navigate(R.id.action_vendorDashboardFragment_to_addProductFragment)
-//    }
+
 
 
     override fun onDestroyView() {

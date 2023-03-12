@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vendor_navigation"
+    app:startDestination="@id/vendor_nav_dashboard">
+
+    <fragment
+        android:id="@+id/vendor_nav_dashboard"
+        android:name="com.yashishu.bsa.ui.vendor.VendorDashboardFragment"
+        android:label="VendorDashboardFragment" >
+        <action
+            android:id="@+id/action_vendor_nav_dashboard_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.yashishu.bsa.ui.vendor.AddProductFragment"
+        android:label="AddProductFragment" />
+    <fragment
+        android:id="@+id/vendor_nav_product"
+        android:name="com.yashishu.bsa.ui.vendor.ProductListFragment"
+        android:label="ProductListFragment" >
+        <action
+            android:id="@+id/action_productListFragment_to_viewProductsFragment"
+            app:destination="@id/viewProductsFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewProductsFragment"
+        android:name="com.yashishu.bsa.ui.vendor.ViewProductsFragment"
+        android:label="ViewProductsFragment" />
+    <fragment
+        android:id="@+id/vendor_nav_orders"
+        android:name="com.yashishu.bsa.ui.vendor.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" />
+</navigation>

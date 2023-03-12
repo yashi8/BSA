@@ -155,7 +155,7 @@ class AddProductFragment : Fragment() {
         ).addOnFailureListener {
             Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
         }.addOnSuccessListener {
-            findNavController().navigate(R.id.action_add_product_fragment_to_navigation_vendor_product)
+            findNavController().navigateUp()
         }
     }
 
