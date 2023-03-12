@@ -1,9 +1,9 @@
 package com.yashishu.bsa.ui.vendor
 
-import android.Manifest.permission.*
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
 import android.content.Context
-
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -31,6 +30,7 @@ import com.vmadalin.easypermissions.annotations.AfterPermissionGranted
 import com.yashishu.bsa.R
 import com.yashishu.bsa.databinding.FragmentAddProductBinding
 import com.yashishu.bsa.models.Product
+import android.Manifest.permission.*
 
 class AddProductFragment : Fragment() {
 
@@ -155,7 +155,7 @@ class AddProductFragment : Fragment() {
         ).addOnFailureListener {
             Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
         }.addOnSuccessListener {
-            findNavController().navigate(R.id.action_addProductFragment_to_vendorDashboardFragment  )
+            findNavController().navigate(R.id.action_add_product_fragment_to_navigation_vendor_product)
         }
     }
 

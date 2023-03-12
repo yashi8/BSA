@@ -47,7 +47,7 @@ class ProductListFragment : Fragment() {
             if (products.isNotEmpty()) {
                 binding.productRecyclerView.adapter = ProductAdapter(requireActivity()){
                     viewModel.setProduct(it)
-                    findNavController().navigate(R.id.action_productListFragment_to_viewProducts)
+                    findNavController().navigate(R.id.action_navigation_vendor_product_to_viewProductsFragment)
                 }
 
                 (binding.productRecyclerView.adapter as ProductAdapter).submitList(products)

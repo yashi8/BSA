@@ -34,11 +34,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        when (PrefUtil(requireActivity()).getUserType()){
-            0 -> findNavController().navigate(R.id.action_navigation_home_to_adminDashboardFragment )
-            1 -> findNavController().navigate(R.id.action_navigation_home_to_vendorDashboardFragment )
-            2 -> findNavController().navigate(R.id.action_navigation_home_to_navigation_dashboard )
-        }
+//        when (PrefUtil(requireActivity()).getUserType()){
+//            0 -> findNavController().navigate(R.id.action_navigation_home_to_adminDashboardFragment )
+//            1 -> findNavController().navigate(R.id.action_navigation_home_to_vendorDashboardFragment )
+//            2 -> findNavController().navigate(R.id.action_navigation_home_to_navigation_dashboard )
+//        }
     }
 
     override fun onDestroyView() {

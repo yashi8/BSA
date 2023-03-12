@@ -5,4 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dashboards"
-    tools:context=".ui.dashboard.DashboardFragment"/>
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/cart2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Shop Buddy"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
+        app:layout_constraintEnd_toEndOf="@+id/vendorOrders5"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/vendorOrders5"
+        app:layout_constraintTop_toBottomOf="@+id/vendorOrders5" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/vendorOrders5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="My Account"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
+        app:layout_constraintEnd_toEndOf="@+id/vendorOrders4"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="@+id/vendorOrders4"
+        app:layout_constraintTop_toBottomOf="@+id/vendorOrders4" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/vendorOrders4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="My Orders"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
+        app:layout_constraintEnd_toEndOf="@+id/vendorOrders3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/vendorOrders3"
+        app:layout_constraintTop_toBottomOf="@+id/vendorOrders3" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/vendorOrders3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Search"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
+        app:layout_constraintEnd_toEndOf="@+id/cart"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/cart"
+        app:layout_constraintTop_toBottomOf="@+id/cart" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:text="Cart"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

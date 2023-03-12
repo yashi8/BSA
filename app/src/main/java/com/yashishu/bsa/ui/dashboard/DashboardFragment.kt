@@ -1,5 +1,6 @@
 package com.yashishu.bsa.ui.dashboard
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ class DashboardFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,

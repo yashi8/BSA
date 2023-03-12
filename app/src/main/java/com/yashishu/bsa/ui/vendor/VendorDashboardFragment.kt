@@ -43,8 +43,8 @@ class VendorDashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            addpro.setOnClickListener { gotoAddProductScreen() }
-            prolist.setOnClickListener { gotoProductListScreen() }
+//            addpro.setOnClickListener { gotoAddProductScreen() }
+//            prolist.setOnClickListener { gotoProductListScreen() }
             btnCustmerSupport.setOnClickListener{ gotoSupportScreen()}
             vendorOrders.setOnClickListener{ gotoOrdersScreen()}
             viewModel = viewModel
@@ -52,21 +52,21 @@ class VendorDashboardFragment : Fragment() {
     }
 
     private fun gotoOrdersScreen() {
-        findNavController().navigate(R.id.action_vendorDashboardFragment_to_ordersFragment)
+        findNavController().navigate(R.id.action_navigation_vendor_dashboard_to_ordersFragment)
     }
 
     private fun gotoSupportScreen() {
-        findNavController().navigate(R.id.action_vendorDashboardFragment_to_customerSupport)
+        findNavController().navigate(R.id.action_navigation_vendor_dashboard_to_customerSupport)
     }
 
 
-    private fun gotoProductListScreen() {
-        findNavController().navigate(R.id.action_vendorDashboardFragment_to_productListFragment)
-    }
+//    private fun gotoProductListScreen() {
+//        findNavController().navigate(R.id.action_vendorDashboardFragment_to_productListFragment)
+//    }
 
-    private fun gotoAddProductScreen() {
-        findNavController().navigate(R.id.action_vendorDashboardFragment_to_addProductFragment)
-    }
+//    private fun gotoAddProductScreen() {
+//        findNavController().navigate(R.id.action_vendorDashboardFragment_to_addProductFragment)
+//    }
 
 
     override fun onDestroyView() {
