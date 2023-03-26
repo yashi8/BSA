@@ -14,23 +14,97 @@
         app:bottomShadowAlpha="0.6"
         app:bottomShadowHeight="64dp"
         app:captionMargin="0dp"
+
         app:captionTextSize="14sp"
         app:carouselBackground="#00000000"
         app:imagePlaceholder="@drawable/csform"
 
         app:imageScaleType="centerCrop"
         app:indicatorMargin="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/searchView"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/searchView"
+
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+
         app:showBottomShadow="true"
-
         app:showCaption="true"
         app:showIndicator="true"
-
         app:showTopShadow="true"
-
         app:topShadowAlpha="0.6"
         app:topShadowHeight="32dp" />
+
+
+    <com.aemerse.slider.ImageCarousel
+        android:id="@+id/carousel1"
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+
+        android:layout_margin="20dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginStart="20dp"
+
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:padding="20dp"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+
+        android:paddingRight="20dp"
+
+        android:paddingBottom="20dp"
+
+        app:autoPlay="false"
+        app:autoPlayDelay="3000"
+        app:autoWidthFixing="true"
+        app:bottomShadowAlpha="0.6"
+        app:bottomShadowHeight="64dp"
+        app:captionMargin="0dp"
+
+
+        app:captionTextSize="14sp"
+        app:carouselBackground="#00000000"
+        app:carouselGravity="CENTER"
+        app:carouselPadding="0dp"
+        app:carouselPaddingBottom="0dp"
+
+
+        app:carouselPaddingEnd="0dp"
+        app:carouselPaddingStart="0dp"
+        app:carouselPaddingTop="0dp"
+        app:carouselType="SHOWCASE"
+        app:imageScaleType="centerCrop"
+        app:indicatorMargin="0dp"
+        app:infiniteCarousel="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carousel"
+        app:scaleOnScroll="false"
+        app:scalingFactor="0.15"
+        app:showBottomShadow="true"
+        app:showCaption="true"
+        app:showIndicator="false"
+        app:showNavigationButtons="false"
+        app:showTopShadow="true"
+        app:topShadowAlpha="0.6"
+        app:topShadowHeight="32dp"
+        app:touchToPause="true" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="33dp"
+        app:layout_constraintBottom_toTopOf="@+id/carousel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

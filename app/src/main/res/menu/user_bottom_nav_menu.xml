@@ -10,7 +10,12 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_dashboard" />
     <item
-        android:id="@+id/user_nav_product"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
-        android:title="@string/title_product" />
+        android:id="@+id/user_nav_Cart"
+        android:icon="@drawable/ic_baseline_shopping_cart_checkout_24"
+        android:title="Cart" />
+
+    <item
+        android:id="@+id/user_nav_Account"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="Account" />
 </menu>

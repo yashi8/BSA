@@ -133,8 +133,6 @@ class AddProductFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
     private fun saveToFireStore(

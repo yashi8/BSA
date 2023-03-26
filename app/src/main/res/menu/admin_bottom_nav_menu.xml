@@ -4,5 +4,5 @@
     <item
         android:id="@+id/admin_nav_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />l̥
+        android:title="@string/title_dashboard" />
 </menu>

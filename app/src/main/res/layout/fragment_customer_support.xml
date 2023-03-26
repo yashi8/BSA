@@ -27,10 +27,10 @@
         android:textColor="@color/white"
         app:backgroundTint="@color/lgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/editTextIssue"
         app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintStart_toStartOf="@+id/editTextIssue"
+        app:layout_constraintTop_toBottomOf="@+id/editTextIssue" />
 
     <TextView
         android:id="@+id/textView11"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/personname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -76,9 +76,9 @@
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColorHint="#37474F"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintEnd_toEndOf="@+id/personname"
+        app:layout_constraintStart_toStartOf="@+id/personname"
+        app:layout_constraintTop_toBottomOf="@+id/personname" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -90,12 +90,12 @@
         android:inputType="phone"
         android:minHeight="48dp"
         android:textColorHint="#424242"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintEnd_toEndOf="@+id/editEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/editEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/editEmailAddress" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editTextIssue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -28,20 +28,95 @@ class UserHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.carousel.registerLifecycle(lifecycle)
+
         imageList.add(
             CarouselItem(
-                imageUrl = "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080",
-                caption = "Photo by Aaron Wu on Unsplash"
+                imageDrawable = R.drawable.plant1,
+                caption = "Bring Peace and Greenery"
             )
         )
+
         imageList.add(
             CarouselItem(
-                imageDrawable = R.drawable.splash,
-                caption = "Photo by Kimiya Oveisi on Unsplash"
+                imageDrawable = R.drawable.plant3,
+                caption = " "
             )
         )
+
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.plant7,
+                caption = "Open Box Delivery"
+            )
+        )
+
+
+
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.msg4,
+                caption = "shop now"
+            )
+
+        )
+
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.cart,
+                caption = "Photo "
+            )
+        )
+
         binding.carousel.setData(imageList)
 
+
+        binding.carousel1.registerLifecycle(lifecycle)
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.plant1,
+                caption = "Bring Peace and Greenery"
+            )
+        )
+
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.plant3,
+                caption = " "
+            )
+        )
+
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.plant7,
+                caption = "Open Box Delivery"
+            )
+        )
+
+
+
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.msg4,
+                caption = "shop now"
+            )
+
+        )
+
+        imageList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.cart,
+                caption = " "
+            )
+        )
+        binding.carousel1.setData(imageList)
+
+
     }
+
+
+
+
+
+
 
 }

@@ -9,14 +9,35 @@
         android:id="@+id/user_nav_dashboard"
         android:name="com.yashishu.bsa.ui.user.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_user_nav_dashboard_to_customerSupport2"
+            app:destination="@id/customerSupport2" />
+    </fragment>
     <fragment
         android:id="@+id/user_nav_home"
         android:name="com.yashishu.bsa.ui.user.UserHomeFragment"
         android:label="fragment_user_home"
-        tools:layout="@layout/fragment_user_home" />
+        tools:layout="@layout/fragment_user_home" >
+        <action
+            android:id="@+id/action_user_nav_home_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/user_nav_product"
         android:name="com.yashishu.bsa.ui.user.ProductFragment"
         android:label="ProductFragment" />
+    <fragment
+        android:id="@+id/customerSupport2"
+        android:name="com.yashishu.bsa.ui.CustomerSupport"
+        android:label="CustomerSupport" />
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.yashishu.bsa.ui.vendor.ProductListFragment"
+        android:label="ProductListFragment" />
+    <fragment
+        android:id="@+id/usercart"
+        android:name="com.yashishu.bsa.usercart"
+        android:label="fragment_usercart"
+        tools:layout="@layout/fragment_usercart" />
 </navigation>

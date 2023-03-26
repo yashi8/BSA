@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.yashishu.bsa.R
 import com.yashishu.bsa.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
@@ -31,8 +33,15 @@ class DashboardFragment : Fragment() {
                 return root
     }
 
+
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    private fun gotoSupportScreen() {
+        findNavController().navigate(R.id.action_vendor_nav_dashboard_to_customerSupport)
+    }
+
 }

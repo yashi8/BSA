@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -42,14 +43,14 @@ class MainActivity : AppCompatActivity() {
                 navView.menu.clear()
                 navView.inflateMenu(R.menu.vendor_bottom_nav_menu)
                 navController.setGraph(R.navigation.vendor_navigation)
-                val appBarConfiguration = AppBarConfiguration(setOf(R.id.vendor_nav_dashboard, R.id.vendor_nav_product, R.id.vendor_nav_orders))
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.vendor_nav_dashboard, R.id.vendor_nav_product, R.id.vendor_nav_orders,R.id.Vendor_nav_Account))
                 setupActionBarWithNavController(navController, appBarConfiguration)
             }
             2 -> {
                 navView.menu.clear()
                 navView.inflateMenu(R.menu.user_bottom_nav_menu)
                 navController.setGraph(R.navigation.user_navigation)
-                val appBarConfiguration = AppBarConfiguration(setOf(R.id.user_nav_home, R.id.user_nav_dashboard))
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.user_nav_home, R.id.user_nav_dashboard,R.id.user_nav_Cart,R.id.user_nav_Account))
                 setupActionBarWithNavController(navController, appBarConfiguration)
             }
         }
@@ -72,6 +73,8 @@ class MainActivity : AppCompatActivity() {
             finish()
             return true
         }
+
+
         return false
     }
 }

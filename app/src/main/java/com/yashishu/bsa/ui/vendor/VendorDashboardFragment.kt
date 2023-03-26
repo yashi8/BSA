@@ -43,13 +43,23 @@ class VendorDashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.apply {
+            addpro.setOnClickListener { gotoAddProductScreen() }
+            btnCustmerSupport.setOnClickListener{ gotoSupportScreen()}
+            viewModel = viewModel
+        }
     }
 
 
 
+    private fun gotoSupportScreen() {
+        findNavController().navigate(R.id.action_vendor_nav_dashboard_to_customerSupport)
+    }
 
 
+    private fun gotoAddProductScreen() {
+        findNavController().navigate(R.id.action_vendor_nav_dashboard_to_addProductFragment)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

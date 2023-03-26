@@ -18,66 +18,26 @@
     tools:context=".ui.vendor.VendorDashboardFragment">
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/vendorOrders2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="My Account"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/lightgreen"
-        app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/addpro"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="@+id/addpro"
-        app:layout_constraintTop_toBottomOf="@+id/addpro" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnCustmerSupport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginTop="16dp"
         android:text="Customer Support"
         app:backgroundTint="@color/lightgreen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/prolist"
-        app:layout_constraintStart_toStartOf="@+id/prolist"
-        app:layout_constraintTop_toBottomOf="@+id/prolist" />
+        app:layout_constraintEnd_toEndOf="@+id/addpro"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/addpro"
+        app:layout_constraintTop_toBottomOf="@+id/addpro" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/addpro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="8dp"
         android:text="Add Product"
         app:backgroundTint="@color/lightgreen"
-        app:layout_constraintEnd_toEndOf="@+id/vendorOrders"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="@+id/vendorOrders"
-        app:layout_constraintTop_toBottomOf="@+id/vendorOrders" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/prolist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Product List"
-        app:backgroundTint="@color/lightgreen"
-        app:layout_constraintEnd_toEndOf="@+id/vendorOrders2"
-        app:layout_constraintStart_toStartOf="@+id/vendorOrders2"
-        app:layout_constraintTop_toBottomOf="@+id/vendorOrders2" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/vendorOrders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="199dp"
-        android:text="Orders"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/lightgreen"
-        app:iconTint="@color/lb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
