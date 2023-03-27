@@ -21,4 +21,6 @@
         <item>Soil</item>
         <item>Accessories and Tools</item>
     </string-array>
+    <string name="price_per_qty">%.2f x 1 </string>
+    <string name="price_per_qty_2">%.2f x 10 </string>
 </resources>

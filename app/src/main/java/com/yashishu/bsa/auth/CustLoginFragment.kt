@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.ktx.Firebase
-import com.yashishu.bsa.databinding.FragmentCustLoginBinding
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.yashishu.bsa.MainActivity
 import com.yashishu.bsa.PrefUtil
 import com.yashishu.bsa.R
+import com.yashishu.bsa.databinding.FragmentCustLoginBinding
 
 
 class CustLoginFragment : Fragment() {
@@ -84,8 +84,10 @@ class CustLoginFragment : Fragment() {
         if (!getVerificationStatus(user)) {
             Toast.makeText(activity, "Your account is not verified yet", Toast.LENGTH_SHORT).show()
             return
+        } else {
+            takeCustomerToDashboard()
         }
-        takeCustomerToDashboard()
+
     }
 
     private fun getVerificationStatus(user: FirebaseUser?): Boolean {

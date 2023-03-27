@@ -2,15 +2,14 @@ package com.yashishu.bsa.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yashishu.bsa.databinding.ProductCard1Binding
 import com.yashishu.bsa.models.Product
 
-class ProductAdapter(
+class ProductSliderAdapter(
     private val listener: (Product) -> Unit
-    ) : ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDiffUtil()) {
+) : ListAdapter<Product, ProductSliderAdapter.ViewHolder>(ProductDiffUtil()) {
     class ViewHolder(
         private val binding: ProductCard1Binding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -32,18 +31,6 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
         holder.itemView.setOnClickListener { listener(getItem(position)) }
-
     }
 
 }
-
-class ProductDiffUtil : DiffUtil.ItemCallback<Product>() {
-    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-        return oldItem == newItem
-    }
-
-    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-        return oldItem.title == newItem.title
-    }
-}
-

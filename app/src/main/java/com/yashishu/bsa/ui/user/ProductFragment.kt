@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -51,14 +53,16 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getProducts(db)
+        val adapter = ProductAdapter() {
+            viewModel.setProduct(it)
+            findNavController().navigate(R.id.action_user_nav_product_to_productDetailFragment)
+        }
+        binding.productRecyclerView.adapter = adapter
+        binding.productRecyclerView.layoutManager = GridLayoutManager(context, 2)
+
         viewModel.products.observe(viewLifecycleOwner) { products ->
             if (products.isNotEmpty()) {
-                binding.productRecyclerView.adapter = ProductAdapter(requireActivity()) {
-                    viewModel.setProduct(it)
-                    // todo display product details fragment
-                }
-
-                (binding.productRecyclerView.adapter as ProductAdapter).submitList(products)
+                adapter.submitList(products)
             } else {
                 binding.productRecyclerView.visibility = View.GONE
             }

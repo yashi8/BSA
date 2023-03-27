@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/user_nav_dashboard"
         android:name="com.yashishu.bsa.ui.user.DashboardFragment"
-        android:label="fragment_dashboard"
+        android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
             android:id="@+id/action_user_nav_dashboard_to_customerSupport2"
@@ -17,27 +17,36 @@
     <fragment
         android:id="@+id/user_nav_home"
         android:name="com.yashishu.bsa.ui.user.UserHomeFragment"
-        android:label="fragment_user_home"
-        tools:layout="@layout/fragment_user_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_user_home">
         <action
-            android:id="@+id/action_user_nav_home_to_productListFragment"
-            app:destination="@id/productListFragment" />
+            android:id="@+id/action_user_nav_home_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_user_nav_home_to_user_nav_product"
+            app:destination="@id/user_nav_product" />
     </fragment>
     <fragment
         android:id="@+id/user_nav_product"
         android:name="com.yashishu.bsa.ui.user.ProductFragment"
-        android:label="ProductFragment" />
+        android:label="Products"
+        tools:layout="@layout/fragment_product">
+        <action
+            android:id="@+id/action_user_nav_product_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerSupport2"
         android:name="com.yashishu.bsa.ui.CustomerSupport"
-        android:label="CustomerSupport" />
+        android:label="Customer Support" />
     <fragment
-        android:id="@+id/productListFragment"
-        android:name="com.yashishu.bsa.ui.vendor.ProductListFragment"
-        android:label="ProductListFragment" />
-    <fragment
-        android:id="@+id/usercart"
-        android:name="com.yashishu.bsa.usercart"
-        android:label="fragment_usercart"
+        android:id="@+id/user_nav_Cart"
+        android:name="com.yashishu.bsa.ui.user.UserCartFragment"
+        android:label="Cart"
         tools:layout="@layout/fragment_usercart" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.yashishu.bsa.ui.user.ProductDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_product_detail" />
 </navigation>
