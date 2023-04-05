@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_user_nav_product_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_user_nav_product_to_user_nav_home"
+            app:destination="@id/user_nav_home" />
     </fragment>
     <fragment
         android:id="@+id/customerSupport2"
@@ -49,4 +52,9 @@
         android:name="com.yashishu.bsa.ui.user.ProductDetailFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_product_detail" />
+    <fragment
+        android:id="@+id/myAccountUserFragment"
+        android:name="com.yashishu.bsa.ui.user.M"
+        android:label="fragment_my_account_user"
+        tools:layout="@layout/fragment_my_account_user" />
 </navigation>

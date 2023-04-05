@@ -38,6 +38,14 @@
                     app:layout_collapseMode="parallax"
                     app:load ="@{viewModel.selectedProduct.img_url}" />
 
+                <ImageView
+                    android:id="@+id/ivmore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|top"
+                    android:padding="16dp"
+                    app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -86,6 +94,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
+                        android:contentDescription="Category"
                         android:scaleType="fitEnd"
                         android:src="@drawable/ic_home_black_24dp" />
 
@@ -118,12 +127,13 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabEdit"
+            android:id="@+id/editproducts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:src="@android:drawable/ic_input_add" />
+            android:src="@drawable/ic_baseline_edit_24"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

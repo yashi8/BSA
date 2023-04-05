@@ -57,3 +57,11 @@ fun ProgressBar.setVisibility(isVisible: Boolean) {
         ProgressBar.GONE
     }
 }
+@BindingAdapter("set_save_state")
+fun ProgressBar.setVisiblity(state: ProductState) {
+    visibility = if (state == ProductState.LOADING) {
+        ProgressBar.VISIBLE
+    } else {
+        ProgressBar.GONE
+    }
+}

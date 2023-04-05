@@ -47,7 +47,7 @@ class AddProductFragment : Fragment() {
 
     companion object {
         const val REQUEST_IMAGE_GET = 12
-        const val COLL_PRODUCT = "products"
+        const val COL_PRODUCT = "products"
     }
 
 
@@ -141,14 +141,14 @@ class AddProductFragment : Fragment() {
         selectedCategory: String,
         price: String
     ) {
-        db.collection(COLL_PRODUCT).add(
+        db.collection(COL_PRODUCT).add(
             Product(
                 title,
                 desc,
                 price,
                 downloadUri.toString(),
                 auth.currentUser!!.uid,
-                selectedCategory
+                selectedCategory.toString()
             )
         ).addOnFailureListener {
             Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
@@ -164,7 +164,7 @@ class AddProductFragment : Fragment() {
 
     private fun addVendorProduct() {
         binding.apply {
-            val title = proTitle.text.toString().trim()
+            val title =proTitle.text.toString().trim()
             val desc = proDesc.text.toString().trim()
             val selectedCategory = binding.editSpinner.selectedItem.toString()
 

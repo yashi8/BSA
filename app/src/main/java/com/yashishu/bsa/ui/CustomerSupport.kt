@@ -22,7 +22,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.yashishu.bsa.databinding.FragmentCustomerSupportBinding
 import com.yashishu.bsa.models.SupportForm
-import com.yashishu.bsa.ui.vendor.AddProductFragment.Companion.COLL_PRODUCT
 
 class CustomerSupport() :Fragment() {
     private var _binding: FragmentCustomerSupportBinding? = null
@@ -33,7 +32,7 @@ class CustomerSupport() :Fragment() {
 
 
     companion object {
-        const val COLL_PRODUCT = "supportform"
+        const val COLL_Support = "supportform"
     }
 
     override fun onCreateView(
@@ -76,7 +75,7 @@ class CustomerSupport() :Fragment() {
         mobileno: String,
         desc: String
     ) {
-        db.collection(COLL_PRODUCT).add(
+        db.collection(COLL_Support).add(
             SupportForm(
                 name,
                 email,

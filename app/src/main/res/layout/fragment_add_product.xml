@@ -71,9 +71,9 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="Product Description"
-            android:inputType="textMultiLine"
+            android:inputType="textMultiLine|textImeMultiLine|textPostalAddress"
             android:minHeight="48dp"
-            android:textStyle="bold"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="@+id/proTitle"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="@+id/proTitle"
@@ -86,7 +86,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Product Cost"
-            android:inputType="number"
+            android:inputType="textLongMessage|textMultiLine|number|textPhonetic"
             android:minHeight="48dp"
             android:textColorHint="#616161"
             app:layout_constraintEnd_toEndOf="@+id/proDesc"
@@ -97,7 +97,7 @@
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="84dp"
+            android:layout_marginBottom="48dp"
             android:text="Add"
             android:textColor="@color/white"
             app:backgroundTint="@color/dark"
@@ -111,13 +111,14 @@
         <ImageView
             android:id="@+id/imgProduct"
             android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:contentDescription="TODO"
             android:src="@drawable/select"
             app:layout_constraintEnd_toEndOf="@+id/proCost"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/proCost"
-            app:layout_constraintTop_toBottomOf="@+id/proCost"
-            android:contentDescription="TODO" />
+            app:layout_constraintTop_toBottomOf="@+id/proCost" />
 
         <Spinner
             android:id="@+id/editSpinner"
@@ -129,7 +130,7 @@
             android:minHeight="48dp"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="@+id/imgProduct"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/imgProduct"
             app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
 
