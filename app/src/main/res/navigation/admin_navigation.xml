@@ -18,9 +18,4 @@
         android:id="@+id/productFragment"
         android:name="com.yashishu.bsa.ui.user.ProductFragment"
         android:label="ProductFragment" />
-    <fragment
-        android:id="@+id/viewAccountsFragment"
-        android:name="com.yashishu.bsa.ViewAccountsFragment"
-        android:label="fragment_view_accounts"
-        tools:layout="@layout/fragment_view_accounts" />
 </navigation>

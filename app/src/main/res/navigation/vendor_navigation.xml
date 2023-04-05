@@ -57,9 +57,4 @@
             android:id="@+id/action_editProductFragment_to_vendor_nav_product"
             app:destination="@id/vendor_nav_product" />
     </fragment>
-    <fragment
-        android:id="@+id/myAccountFragment"
-        android:name="com.yashishu.bsa.MyAccountFragment"
-        android:label="fragment_my_account"
-        tools:layout="@layout/fragment_my_account" />
 </navigation>
