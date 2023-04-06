@@ -26,6 +26,7 @@ import com.vmadalin.easypermissions.EasyPermissions
 import com.yashishu.bsa.MainActivity
 import com.yashishu.bsa.PrefUtil
 import com.yashishu.bsa.R
+import com.yashishu.bsa.auth.VndrRegisterFragment.Companion.REQUEST_LOCATION_GET
 import com.yashishu.bsa.databinding.FragmentCustRegisterBinding
 
 class CustRegisterFragment : Fragment(), EasyPermissions.PermissionCallbacks {
@@ -66,7 +67,7 @@ class CustRegisterFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         EasyPermissions.requestPermissions(
             this,
             "give me the location",
-            VndrRegisterFragment.REQUEST_LOCATION_GET,
+            REQUEST_LOCATION_GET,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
         )
@@ -88,7 +89,6 @@ class CustRegisterFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             }.addOnFailureListener {
                 Snackbar.make(binding.root, "error ${it.message}", Snackbar.LENGTH_SHORT)
                     .show()
-
             }
     }
 

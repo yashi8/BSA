@@ -51,7 +51,11 @@
         android:id="@+id/productDetailFragment"
         android:name="com.yashishu.bsa.ui.user.ProductDetailFragment"
         android:label="Detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <action
+            android:id="@+id/action_productDetailFragment_to_user_nav_Cart"
+            app:destination="@id/user_nav_Cart" />
+    </fragment>
     <fragment
         android:id="@+id/myAccountUserFragment"
         android:name="com.yashishu.bsa.ui.user.M"
