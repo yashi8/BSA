@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yashishu.bsa.models.Product
-import com.yashishu.bsa.ui.vendor.AddProductFragment.Companion.COL_PRODUCT
+import com.yashishu.bsa.ui.vendor.AddProductFragment.Companion.COLL_PRODUCTS
 
 
 class AddProductViewModel : ViewModel() {
@@ -29,7 +29,7 @@ class AddProductViewModel : ViewModel() {
             _isSaved.value = false
         } else {
             val product = Product(title,desc,selectedCategory,price)
-            db.collection(COL_PRODUCT).add(product).addOnSuccessListener {
+            db.collection(COLL_PRODUCTS).add(product).addOnSuccessListener {
                 _isLoading.value = false
                 _isSaved.value = true
             }.addOnFailureListener {

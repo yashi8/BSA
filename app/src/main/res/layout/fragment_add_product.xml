@@ -19,20 +19,6 @@
         tools:context=".ui.vendor.AddProductFragment">
 
         <EditText
-            android:id="@+id/proCost2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Product Cost"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:textColorHint="#616161"
-            app:layout_constraintEnd_toEndOf="@+id/proDesc"
-            app:layout_constraintStart_toStartOf="@+id/proDesc"
-            app:layout_constraintTop_toBottomOf="@+id/proDesc" />
-
-        <EditText
             android:id="@+id/proTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +59,7 @@
             android:hint="Product Description"
             android:inputType="textMultiLine|textImeMultiLine|textPostalAddress"
             android:minHeight="48dp"
+            android:scrollbars="vertical"
             android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="@+id/proTitle"
             app:layout_constraintHorizontal_bias="0.502"

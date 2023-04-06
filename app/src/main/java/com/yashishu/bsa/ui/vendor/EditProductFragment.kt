@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
@@ -43,13 +44,22 @@ class EditProductFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fabSave.setOnClickListener {
-            val title = binding.editPrdName.text.toString()
-            val desc = binding.editPrdBrand.text.toString()
-            val price = binding.editPrdPrice.text.toString()
+        val adapter = ArrayAdapter.createFromResource(
+            requireActivity(),
+            R.array.products,
+            android.R.layout.simple_list_item_1
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.editSpinner.adapter = adapter
+        binding.btnEdit.setOnClickListener {
+            val title = binding.proTitle2.text.toString()
+            val category = binding.editSpinner.selectedItem.toString()
+            val desc = binding.proDesc2.text.toString()
+            val price = binding.proPrice2.text.toString()
+
             // valid if values are not empty
-            if (title.isNotEmpty() && desc.isNotEmpty() && price.isNotEmpty()) {
-                viewModel.updateProduct(db, title, desc, price)
+            if (title.isNotEmpty() && desc.isNotEmpty() && price.isNotEmpty() && category.isNotEmpty()) {
+                viewModel.updateProduct(db, title, desc,category, price)
             } else {
                 Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT)
                     .show()

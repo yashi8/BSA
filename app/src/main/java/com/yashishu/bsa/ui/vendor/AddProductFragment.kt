@@ -47,7 +47,7 @@ class AddProductFragment : Fragment() {
 
     companion object {
         const val REQUEST_IMAGE_GET = 12
-        const val COL_PRODUCT = "products"
+        const val COLL_PRODUCTS = "products"
     }
 
 
@@ -65,6 +65,7 @@ class AddProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //spinner
         val adapter = ArrayAdapter.createFromResource(
             requireActivity(),
             R.array.products,
@@ -141,15 +142,16 @@ class AddProductFragment : Fragment() {
         selectedCategory: String,
         price: String
     ) {
-        db.collection(COL_PRODUCT).add(
+        db.collection(COLL_PRODUCTS).add(
             Product(
                 title,
                 desc,
-                price,
                 downloadUri.toString(),
                 auth.currentUser!!.uid,
-                selectedCategory.toString()
-            )
+                selectedCategory,
+                price
+
+                )
         ).addOnFailureListener {
             Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
         }.addOnSuccessListener {

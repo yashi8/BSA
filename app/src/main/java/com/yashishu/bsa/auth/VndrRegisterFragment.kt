@@ -1,22 +1,17 @@
 package com.yashishu.bsa.auth
 
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Location
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -32,9 +27,7 @@ import com.vmadalin.easypermissions.EasyPermissions
 import com.yashishu.bsa.MainActivity
 import com.yashishu.bsa.PrefUtil
 import com.yashishu.bsa.R
-import com.yashishu.bsa.auth.VndrRegisterFragment.Companion.COLL_ACCOUNT
 import com.yashishu.bsa.databinding.FragmentVndrRegisterBinding
-import java.security.Permission
 
 class VndrRegisterFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var hasPermission: Boolean = false
@@ -111,6 +104,30 @@ class VndrRegisterFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             val password = veditpassword1.text.toString()
             val name = veditname.text.toString()
             val phone = veditcontact1.text.toString()
+            var error=false
+
+            if (email.isEmpty()){
+                binding.veditemail1.error="Please provide email"
+                error= true
+            }
+
+            if (password.isEmpty()){
+                binding.veditpassword1.error="Please provide password"
+                error= true
+            }
+
+            if (name.isEmpty()){
+                binding.veditname.error="Please Enter Confirm Password"
+                error=true
+            }
+
+            if (phone.isEmpty()){
+                binding.veditcontact1.error="Please Enter Confirm Password"
+                error=true
+            }
+            if (error) {
+                return
+            }
             if (email.isNotEmpty() && password.isNotEmpty() && password.length >= 8 && name.isNotEmpty() && phone.length == 10) {
                 btnvndrRegister.isEnabled = false
                 auth.createUserWithEmailAndPassword(email, password)

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.yashishu.bsa.ui.vendor.AddProductFragment.Companion.COL_PRODUCT
+import com.yashishu.bsa.ui.vendor.AddProductFragment.Companion.COLL_PRODUCTS
 
 import com.yashishu.bsa.models.Product
 
@@ -30,7 +30,7 @@ class VendorDashboardViewModel : ViewModel() {
     private fun loadProducts(db: FirebaseFirestore, vendorId: String) {
         // fetch data from firebase firestore
 
-        db.collection(COL_PRODUCT).whereEqualTo("vid", vendorId).get().addOnFailureListener {
+        db.collection(COLL_PRODUCTS).whereEqualTo("vid", vendorId).get().addOnFailureListener {
         }.addOnCanceledListener {
             Log.e("VendorDashboardViewModel","Cancelled Fetching Products")
         }.addOnSuccessListener {
@@ -45,10 +45,10 @@ class VendorDashboardViewModel : ViewModel() {
     }
 
     fun deleteProduct(db: FirebaseFirestore) {
-        db.collection(COL_PRODUCT).whereEqualTo("title", _selectedProduct.value?.title).get()
+        db.collection(COLL_PRODUCTS).whereEqualTo("title", _selectedProduct.value?.title).get()
             .addOnSuccessListener {
                 if (!it.isEmpty) {
-                    db.collection(COL_PRODUCT).document(it.documents[0].id).delete().addOnSuccessListener {
+                    db.collection(COLL_PRODUCTS).document(it.documents[0].id).delete().addOnSuccessListener {
                         //doubt about vendor id
                         loadProducts(db, auth.currentUser!!.uid)
                     }
@@ -60,12 +60,13 @@ class VendorDashboardViewModel : ViewModel() {
         db: FirebaseFirestore,
         title: String,
         desc: String,
+        selectedCategory: String,
         price: String
 
     ) {
         // update product in firebase firestore
         _saveState.value = ProductState.LOADING
-        db.collection(COL_PRODUCT).whereEqualTo("name", _selectedProduct.value?.title).get()
+        db.collection(COLL_PRODUCTS).whereEqualTo("title", _selectedProduct.value?.title).get()
             .addOnSuccessListener { query ->
                 if (query.isEmpty) {
                     _saveState.value = ProductState.ERROR
@@ -74,8 +75,10 @@ class VendorDashboardViewModel : ViewModel() {
                     product?.let {
                         it.title = title
                         it.desc = desc
+                        it.category=selectedCategory
                         it.price = price.toDouble().toString()
-                        db.collection(COL_PRODUCT).document(query.documents[0].id).set(it)
+
+                        db.collection(COLL_PRODUCTS).document(query.documents[0].id).set(it)
                             .addOnSuccessListener {
                                 _saveState.value = ProductState.SAVED
                             }.addOnFailureListener {
