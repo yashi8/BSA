@@ -47,7 +47,7 @@ class AddProductFragment : Fragment() {
 
     companion object {
         const val REQUEST_IMAGE_GET = 12
-        const val COLL_PRODUCT = "products"
+        const val COLL_PRODUCTS = "products"
     }
 
 
@@ -65,6 +65,7 @@ class AddProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //spinner
         val adapter = ArrayAdapter.createFromResource(
             requireActivity(),
             R.array.products,
@@ -141,15 +142,16 @@ class AddProductFragment : Fragment() {
         selectedCategory: String,
         price: String
     ) {
-        db.collection(COLL_PRODUCT).add(
+        db.collection(COLL_PRODUCTS).add(
             Product(
                 title,
                 desc,
-                price,
                 downloadUri.toString(),
                 auth.currentUser!!.uid,
-                selectedCategory
-            )
+                selectedCategory,
+                price
+
+                )
         ).addOnFailureListener {
             Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
         }.addOnSuccessListener {
@@ -164,7 +166,7 @@ class AddProductFragment : Fragment() {
 
     private fun addVendorProduct() {
         binding.apply {
-            val title = proTitle.text.toString().trim()
+            val title =proTitle.text.toString().trim()
             val desc = proDesc.text.toString().trim()
             val selectedCategory = binding.editSpinner.selectedItem.toString()
 

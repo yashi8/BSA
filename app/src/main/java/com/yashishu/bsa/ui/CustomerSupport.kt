@@ -22,7 +22,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.yashishu.bsa.databinding.FragmentCustomerSupportBinding
 import com.yashishu.bsa.models.SupportForm
-import com.yashishu.bsa.ui.vendor.AddProductFragment.Companion.COLL_PRODUCT
 
 class CustomerSupport() :Fragment() {
     private var _binding: FragmentCustomerSupportBinding? = null
@@ -33,7 +32,7 @@ class CustomerSupport() :Fragment() {
 
 
     companion object {
-        const val COLL_PRODUCT = "supportform"
+        const val COLL_SUPPORT = "supportform"
     }
 
     override fun onCreateView(
@@ -58,12 +57,12 @@ class CustomerSupport() :Fragment() {
         binding.apply {
             val name = personname.text.toString().trim()
             val email = editEmailAddress.text.toString().trim()
-            val desc = editTextIssue.text.toString().trim()
+            val issue = editTextIssue.text.toString().trim()
             val mobileno = editTextPhone.text.toString().trim()
 
-            if (name.isNotEmpty() && desc.isNotEmpty() && email.isNotEmpty() && mobileno.isNotEmpty()) {
+            if (name.isNotEmpty() && issue.isNotEmpty() && email.isNotEmpty() && mobileno.isNotEmpty()) {
                 btnsubmit.isEnabled = false
-                saveToFireStore(name, email, mobileno, desc)
+                saveToFireStore(name, email, mobileno, issue)
             }
         }
     }
@@ -74,14 +73,14 @@ class CustomerSupport() :Fragment() {
         name: String,
         email: String,
         mobileno: String,
-        desc: String
+        issue: String
     ) {
-        db.collection(COLL_PRODUCT).add(
+        db.collection(COLL_SUPPORT).add(
             SupportForm(
                 name,
                 email,
                 mobileno,
-                desc,
+                issue,
                 auth.currentUser!!.uid,
             )
         ).addOnFailureListener {

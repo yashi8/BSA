@@ -76,7 +76,7 @@ class UserHomeFragment : Fragment() {
         imageList.add(
             CarouselItem(
                 imageDrawable = R.drawable.plant3,
-                caption = " "
+                caption = "Besides of Beauty plant for life"
             )
         )
 
@@ -100,7 +100,7 @@ class UserHomeFragment : Fragment() {
         imageList.add(
             CarouselItem(
                 imageDrawable = R.drawable.cart,
-                caption = "Photo "
+                caption = "Lets Pay Back Our Planet"
             )
         )
 

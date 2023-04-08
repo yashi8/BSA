@@ -38,6 +38,14 @@
                     app:layout_collapseMode="parallax"
                     app:load ="@{viewModel.selectedProduct.img_url}" />
 
+                <ImageView
+                    android:id="@+id/ivmore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|top"
+                    android:padding="16dp"
+                    app:srcCompat="@drawable/ic_baseline_arrow_drop_down_circle_24" />
+
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -58,11 +66,11 @@
 
                 <TextView
                     android:id="@+id/protitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="311dp"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.selectedProduct.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#673AB7"
+                    android:textColor="#3A2424"
                     android:textStyle="bold|italic"
                     tools:text="Title" />
 
@@ -86,8 +94,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
+                        android:contentDescription="Category"
+                        android:text="Category"
                         android:scaleType="fitEnd"
-                        android:src="@drawable/ic_home_black_24dp" />
+                        android:src="@drawable/ic_baseline_category_24" />
 
                     <TextView
                         android:id="@+id/ProdCategory"
@@ -114,16 +124,18 @@
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     tools:text="Description" />
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabEdit"
+            android:id="@+id/editproducts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:src="@android:drawable/ic_input_add" />
+            android:src="@drawable/ic_baseline_edit_24"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

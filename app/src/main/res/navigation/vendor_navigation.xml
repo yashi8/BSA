@@ -34,7 +34,11 @@
     <fragment
         android:id="@+id/viewProductsFragment"
         android:name="com.yashishu.bsa.ui.vendor.ViewProductsFragment"
-        android:label="ViewProductsFragment" />
+        android:label="ViewProductsFragment" >
+        <action
+            android:id="@+id/action_viewProductsFragment_to_editProductFragment"
+            app:destination="@id/editProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/vendor_nav_orders"
         android:name="com.yashishu.bsa.ui.vendor.OrdersFragment"
@@ -44,4 +48,13 @@
         android:id="@+id/customerSupport"
         android:name="com.yashishu.bsa.ui.CustomerSupport"
         android:label="CustomerSupport" />
+    <fragment
+        android:id="@+id/editProductFragment"
+        android:name="com.yashishu.bsa.ui.vendor.EditProductFragment"
+        android:label="fragment_edit_product"
+        tools:layout="@layout/fragment_edit_product" >
+        <action
+            android:id="@+id/action_editProductFragment_to_vendor_nav_product"
+            app:destination="@id/vendor_nav_product" />
+    </fragment>
 </navigation>

@@ -16,6 +16,7 @@
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="@color/material_dynamic_neutral10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.42"
@@ -60,6 +61,7 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/editname"
         app:layout_constraintStart_toStartOf="@+id/editname"
         app:layout_constraintTop_toBottomOf="@+id/editname" />
@@ -72,6 +74,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/editemail"
         app:layout_constraintStart_toStartOf="@+id/editemail"
         app:layout_constraintTop_toBottomOf="@+id/editemail" />
@@ -84,6 +87,7 @@
         android:ems="10"
         android:hint="Contact"
         android:inputType="phone"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/editpassword"
         app:layout_constraintStart_toStartOf="@+id/editpassword"
         app:layout_constraintTop_toBottomOf="@+id/editpassword" />

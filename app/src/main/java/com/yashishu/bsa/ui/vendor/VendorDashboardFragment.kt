@@ -12,12 +12,12 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.yashishu.bsa.R
 import com.yashishu.bsa.databinding.FragmentVendorDashboardBinding
-import com.yashishu.bsa.ui.vendor.VendorDashboardViewModel
 
 class VendorDashboardFragment : Fragment() {
 
     companion object {
         fun newInstance() = VendorDashboardFragment()
+
     }
 
     private val viewModel: VendorDashboardViewModel by activityViewModels()

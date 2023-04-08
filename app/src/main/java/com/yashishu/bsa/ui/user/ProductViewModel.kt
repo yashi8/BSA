@@ -50,7 +50,7 @@ class ProductViewModel : ViewModel() {
     }
 
     private fun loadProducts(db: FirebaseFirestore) {
-        db.collection(COL_PRODUCTS).get().addOnFailureListener {}.addOnCanceledListener {
+        db.collection(COLL_PRODUCTS).get().addOnFailureListener {}.addOnCanceledListener {
             Log.e("UserViewModel", "Cancelled Fetching Products")
         }.addOnSuccessListener {
             val prds = it.toObjects(Product::class.java)
@@ -60,7 +60,7 @@ class ProductViewModel : ViewModel() {
     }
 
     private fun getRandom6Products(db: FirebaseFirestore) {
-        db.collection(COL_PRODUCTS).get().addOnFailureListener {}.addOnCanceledListener {
+        db.collection(COLL_PRODUCTS).get().addOnFailureListener {}.addOnCanceledListener {
             Log.e("UserViewModel", "Cancelled Fetching Products")
         }.addOnSuccessListener {
             val prds = it.toObjects(Product::class.java)
@@ -71,7 +71,7 @@ class ProductViewModel : ViewModel() {
     }
 
     private fun loadProductsByQuery(db: FirebaseFirestore, query: String) {
-        db.collection(COL_PRODUCTS).whereLessThanOrEqualTo("title", query)
+        db.collection(COLL_PRODUCTS).whereLessThanOrEqualTo("title", query)
             .whereGreaterThanOrEqualTo("title", query + "\uf8ff").get().addOnFailureListener {}
             .addOnCanceledListener {
                 Log.e("UserViewModel", "Cancelled Fetching Products")
@@ -83,7 +83,7 @@ class ProductViewModel : ViewModel() {
     }
 
     private fun loadProductsByCategory(db: FirebaseFirestore, category: String) {
-        db.collection(COL_PRODUCTS).whereEqualTo("category", category).get().addOnFailureListener {}
+        db.collection(COLL_PRODUCTS).whereEqualTo("category", category).get().addOnFailureListener {}
             .addOnCanceledListener {
                 Log.e("UserViewModel", "Cancelled Fetching Products")
             }.addOnSuccessListener {
@@ -130,7 +130,7 @@ class ProductViewModel : ViewModel() {
     }
 
     private fun loadProductsByVendor(db: FirebaseFirestore, vid: String) {
-        db.collection(COL_PRODUCTS).whereEqualTo("vid", vid).get().addOnFailureListener {}
+        db.collection(COLL_PRODUCTS).whereEqualTo("vid", vid).get().addOnFailureListener {}
             .addOnCanceledListener {
                 Log.e("UserViewModel", "Cancelled Fetching Products")
             }.addOnSuccessListener {
@@ -202,7 +202,7 @@ class ProductViewModel : ViewModel() {
 
 
     companion object {
-        const val COL_PRODUCTS = "products"
+        const val COLL_PRODUCTS = "products"
         const val COL_CART = "cart"
     }
 }
