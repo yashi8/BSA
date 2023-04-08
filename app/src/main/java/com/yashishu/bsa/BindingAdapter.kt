@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.yashishu.bsa.R
+import com.yashishu.bsa.models.CartItem
 
 @BindingAdapter("load")
 fun ImageView.loadImage(url: String?) {
@@ -28,23 +29,23 @@ fun setSingleItemPrice(tv: TextView, price: String?) {
 @BindingAdapter("ten_item")
 fun setTenItemPrice(tv: TextView, price: String?) {
     // multiply price by 10
-    val priceInt = price?.toInt()
+    val priceInt = price?.toFloat()
     val priceString = "₹ ${priceInt?.times(10)}.00"
     tv.text = "$priceString x 10"
 }
 
 @BindingAdapter("price_calculated")
 fun setPriceCalculated(tv: TextView, price: String?) {
-    val priceInt = price?.toInt()
+    val priceInt = price?.toFloat()
     //Rs. 88.00 (excluding GST)
     val priceString = "₹ ${priceInt}.00 (excluding GST)"
     tv.text = priceString
 }
 
 @BindingAdapter("price_calculated_cart")
-fun setPriceCalculatedCart(tv: TextView, price: Int?) {
-    val priceInt = price?.toInt()
-    val priceString = "₹ ${priceInt}.00"
+fun setPriceCalculatedCart(tv: TextView, cartItem: CartItem) {
+    val priceInt = cartItem.price?.toInt()
+    val priceString = "₹ ${priceInt?.times(cartItem.qty)}.00"
     tv.text = priceString
 }
 
@@ -57,6 +58,7 @@ fun ProgressBar.setVisibility(isVisible: Boolean) {
         ProgressBar.GONE
     }
 }
+
 @BindingAdapter("set_save_state")
 fun ProgressBar.setVisiblity(state: ProductState) {
     visibility = if (state == ProductState.LOADING) {

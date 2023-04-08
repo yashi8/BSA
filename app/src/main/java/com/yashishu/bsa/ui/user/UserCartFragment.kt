@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -55,8 +56,12 @@ class UserCartFragment : Fragment() {
         binding.apply {
             rvCart.layoutManager = LinearLayoutManager(requireContext())
             rvCart.adapter = adapter
+            fabPay.setOnClickListener {
+                findNavController().navigate(R.id.action_user_nav_Cart_to_paymentFragment)
+            }
         }
         viewModel.cartItems.observe(viewLifecycleOwner) {
+//            binding.fabPay.text = "Pay ₹${viewModel.cartTotal.value}"
             binding.apply {
                 if (it.isEmpty()) {
                     tvEmptyCart.visibility = View.VISIBLE

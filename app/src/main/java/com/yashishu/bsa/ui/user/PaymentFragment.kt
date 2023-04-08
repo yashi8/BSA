@@ -71,6 +71,7 @@ class PaymentFragment : Fragment() {
         paymentsClient = PaymentsUtil.createPaymentsClient(requireActivity())
         possiblyShowGooglePayButton()
         googlePayButton.setOnClickListener { requestPayment() }
+        binding.tvTotalAmount.text = "Rs. ${viewModel.cartTotal.value}"
 
     }
 

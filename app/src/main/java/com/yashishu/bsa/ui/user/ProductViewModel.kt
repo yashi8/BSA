@@ -30,6 +30,8 @@ class ProductViewModel : ViewModel() {
     private var _cart: MutableLiveData<JSONObject> = MutableLiveData()
     val cart: MutableLiveData<JSONObject> = _cart
 
+    private val _cartTotal = MutableLiveData<Float>(0f)
+    val cartTotal: LiveData<Float> = _cartTotal
 
     fun setCart(amt: Float) {
         val cart = JSONObject()
@@ -83,7 +85,8 @@ class ProductViewModel : ViewModel() {
     }
 
     private fun loadProductsByCategory(db: FirebaseFirestore, category: String) {
-        db.collection(COLL_PRODUCTS).whereEqualTo("category", category).get().addOnFailureListener {}
+        db.collection(COLL_PRODUCTS).whereEqualTo("category", category).get()
+            .addOnFailureListener {}
             .addOnCanceledListener {
                 Log.e("UserViewModel", "Cancelled Fetching Products")
             }.addOnSuccessListener {
@@ -120,10 +123,13 @@ class ProductViewModel : ViewModel() {
             }.addOnSuccessListener {
                 val cartItems = it.toObjects(CartItem::class.java)
                 _cartItems.value = cartItems
+                for (item in cartItems) {
+                    _cartTotal.value = _cartTotal.value!! + item.price * item.qty
+                    Log.d("UserViewModel", "Cart Total: ${_cartTotal.value}")
+                }
                 Log.d("UserViewModel", "Cart Items loaded ${cartItems.size}")
             }
     }
-
 
     fun getProductByVendor(db: FirebaseFirestore, vid: String) {
         loadProductsByVendor(db, vid)
@@ -145,7 +151,7 @@ class ProductViewModel : ViewModel() {
         val cartItem = CartItem(
             product,
             FirebaseAuth.getInstance().currentUser!!.uid,
-            price = product.price.toInt(),
+            price = product.price.toFloat(),
             qty = qty
         )
         // store object in localcart
@@ -188,7 +194,20 @@ class ProductViewModel : ViewModel() {
     }
 
     fun removeCartItem(db: FirebaseFirestore, auth: FirebaseAuth, item: CartItem?) {
-        removeCartItem(db, auth, item)
+        if (item != null) {
+            db.collection(COL_CART).whereEqualTo("uid", auth.currentUser!!.uid)
+                .whereEqualTo("product", item.product).get().addOnSuccessListener {
+                    it.documents.forEach { doc ->
+                        db.collection(COL_CART).document(doc.id).delete().addOnSuccessListener {
+                            Log.d("UserViewModel", "Removed from cart")
+                            _isProductInCart.value = false
+                            loadProducts(db)
+                        }.addOnFailureListener {
+                            Log.e("UserViewModel", "Failed to remove from cart")
+                        }
+                    }
+                }
+        }
     }
 
     fun isProductInCloudCart(db: FirebaseFirestore, auth: FirebaseAuth) {
