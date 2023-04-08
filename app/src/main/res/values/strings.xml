@@ -23,4 +23,10 @@
     </string-array>
     <string name="price_per_qty">%.2f x 1 </string>
     <string name="price_per_qty_2">%.2f x 10 </string>
+    <string name="googlepay_button_content_description">Google Pay</string>
+    <string name="buy_with_googlepay_button_content_description">Buy with Google Pay</string>
+    <string name="googlepay_status_unavailable" translatable="false">Unfortunately, Google Pay is not available on this phone.</string>
+    <string name="googlepay_status_checking" translatable="false">Checking if Google Pay is available...</string>
+    <string name="payments_show_name" translatable="false">Successfully received payment data for %s!</string>
+    <string name="ask_message">Ask</string>
 </resources>

@@ -43,10 +43,24 @@
         android:id="@+id/user_nav_Cart"
         android:name="com.yashishu.bsa.ui.user.UserCartFragment"
         android:label="Cart"
-        tools:layout="@layout/fragment_usercart" />
+        tools:layout="@layout/fragment_usercart">
+        <action
+            android:id="@+id/action_user_nav_Cart_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.yashishu.bsa.ui.user.ProductDetailFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_product_detail" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.yashishu.bsa.ui.user.PaymentFragment"
+        android:label="PaymentFragment"
+        tools:layout="@layout/fragment_payment">
+        <argument
+            android:name="totalAmount"
+            android:defaultValue="0.00"
+            app:argType="float" />
+    </fragment>
 </navigation>

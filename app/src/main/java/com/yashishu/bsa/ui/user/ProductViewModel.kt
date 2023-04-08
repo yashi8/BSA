@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yashishu.bsa.models.CartItem
 import com.yashishu.bsa.models.Product
+import org.json.JSONObject
 
 class ProductViewModel : ViewModel() {
     private val _products = MutableLiveData<List<Product>>()
@@ -25,6 +26,20 @@ class ProductViewModel : ViewModel() {
 
     private val _isProductInCart = MutableLiveData<Boolean>()
     val isProductInCart: LiveData<Boolean> = _isProductInCart
+
+    private var _cart: MutableLiveData<JSONObject> = MutableLiveData()
+    val cart: MutableLiveData<JSONObject> = _cart
+
+
+    fun setCart(amt: Float) {
+        val cart = JSONObject()
+        cart.put("currencyCode", "INR")
+        cart.put("totalPrice", amt)
+        cart.put("totalPriceStatus", "FINAL")
+        cart.put("lineItems", listOf<JSONObject>())
+        _cart.value = cart
+    }
+
 
     fun setQuery(query: String) {
         _query.value = query
