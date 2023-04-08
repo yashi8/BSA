@@ -46,12 +46,16 @@
         android:id="@+id/user_nav_Cart"
         android:name="com.yashishu.bsa.ui.user.UserCartFragment"
         android:label="Cart"
-        tools:layout="@layout/fragment_usercart" />
+        tools:layout="@layout/fragment_usercart">
+        <action
+            android:id="@+id/action_user_nav_Cart_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.yashishu.bsa.ui.user.ProductDetailFragment"
         android:label="Detail"
-        tools:layout="@layout/fragment_product_detail" >
+        tools:layout="@layout/fragment_product_detail">
         <action
             android:id="@+id/action_productDetailFragment_to_user_nav_Cart"
             app:destination="@id/user_nav_Cart" />
@@ -61,4 +65,17 @@
         android:name="com.yashishu.bsa.ui.user.M"
         android:label="fragment_my_account_user"
         tools:layout="@layout/fragment_my_account_user" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.yashishu.bsa.ui.user.PaymentFragment"
+        android:label="PaymentFragment">
+        <argument
+            android:name="totalAmount"
+            android:defaultValue="0.0"
+            app:argType="float" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatBotFragment"
+        android:name="com.yashishu.bsa.ui.user.ChatBotFragment"
+        android:label="ChatBotFragment" />
 </navigation>
