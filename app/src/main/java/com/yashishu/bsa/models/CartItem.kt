@@ -4,7 +4,7 @@ data class CartItem(
     val product: Product = Product(),
     val uid: String = "",
     val qty: Int = 1,
-    val price: Int = 0,
+    val price: Float = 0f,
     val timestamp: Long = System.currentTimeMillis(),
 ) {
     fun incQty() = copy(qty = qty + 1)
