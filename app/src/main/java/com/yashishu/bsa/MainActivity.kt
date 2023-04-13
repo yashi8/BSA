@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 navView.menu.clear()
                 navView.inflateMenu(R.menu.user_bottom_nav_menu)
                 navController.setGraph(R.navigation.user_navigation)
-                val appBarConfiguration = AppBarConfiguration(setOf(R.id.user_nav_home, R.id.user_nav_dashboard,R.id.user_nav_Cart,R.id.user_nav_Account))
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.user_nav_home, R.id.user_nav_dashboard,R.id.user_nav_Cart,R.id.myAccountUserFragment))
                 setupActionBarWithNavController(navController, appBarConfiguration)
             }
         }
