@@ -61,11 +61,6 @@
             app:destination="@id/user_nav_Cart" />
     </fragment>
     <fragment
-        android:id="@+id/nav_user_account"
-        android:name="com.yashishu.bsa.ui.user.MyAccountUserFragment"
-        android:label="fragment_my_account_user"
-        tools:layout="@layout/fragment_my_account_user" />
-    <fragment
         android:id="@+id/paymentFragment"
         android:name="com.yashishu.bsa.ui.user.PaymentFragment"
         android:label="PaymentFragment">

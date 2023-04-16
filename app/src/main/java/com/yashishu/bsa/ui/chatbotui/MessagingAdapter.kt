@@ -1,22 +1,18 @@
 package com.codepalace.chatbot.ui
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.util.Log
+import android.app.Notification
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.codepalace.chatbot.R
-import com.codepalace.chatbot.data.Message
-import com.codepalace.chatbot.utils.Constants.RECEIVE_ID
-import com.codepalace.chatbot.utils.Constants.SEND_ID
 import com.yashishu.bsa.R
-import kotlinx.android.synthetic.main.message_item.view.*
+import com.yashishu.bsa.ui.utils.Constants.RECEIVE_ID
+import com.yashishu.bsa.ui.utils.Constants.SEND_ID
 
 class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>() {
 
-    var messagesList = mutableListOf<Message>()
+    var messagesList = mutableListOf<Notification.MessagingStyle.Message>()
 
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
@@ -61,7 +57,7 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
         }
     }
 
-    fun insertMessage(message: Message) {
+    fun insertMessage(message: Notification.MessagingStyle.Message) {
         this.messagesList.add(message)
         notifyItemInserted(messagesList.size)
     }

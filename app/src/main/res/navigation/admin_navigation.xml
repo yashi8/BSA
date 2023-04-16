@@ -18,4 +18,14 @@
         android:id="@+id/productFragment"
         android:name="com.yashishu.bsa.ui.user.ProductFragment"
         android:label="ProductFragment" />
+    <fragment
+        android:id="@+id/viewUsersFragment"
+        android:name="com.yashishu.bsa.viewUsersFragment"
+        android:label="fragment_view_users"
+        tools:layout="@layout/fragment_view_users" />
+    <fragment
+        android:id="@+id/customerRequestsFragment"
+        android:name="com.yashishu.bsa.CustomerRequestsFragment"
+        android:label="fragment_customer_requests"
+        tools:layout="@layout/fragment_customer_requests" />
 </navigation>
