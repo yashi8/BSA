@@ -1,57 +1,49 @@
 package com.yashishu.bsa.ui.user
 
 
-import android.app.Activity.RESULT_CANCELED
-import android.app.Activity.RESULT_OK
-import android.content.Intent
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.navArgs
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.wallet.*
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.yashishu.bsa.PaymentsUtil
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.fuel.json.responseJson
+import com.github.kittinunf.result.Result
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.stripe.android.PaymentConfiguration
+import com.stripe.android.paymentsheet.PaymentSheet
+import com.stripe.android.paymentsheet.PaymentSheetResult
 import com.yashishu.bsa.R
-import org.json.JSONException
-import org.json.JSONObject
+import com.yashishu.bsa.auth.Customer
 
 class PaymentFragment : Fragment() {
     private var _binding: com.yashishu.bsa.databinding.FragmentPaymentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ProductViewModel by activityViewModels()
-    private val args: PaymentFragmentArgs by navArgs()
 
-    private val baseRequest = JSONObject().apply {
-        put("apiVersion", 2)
-        put("apiVersionMinor", 0)
+    private lateinit var paymentSheet: PaymentSheet
+    private lateinit var customerConfig: PaymentSheet.CustomerConfiguration
+    private lateinit var paymentIntentClientSecret: String
+
+    private val auth: FirebaseAuth by lazy {
+        Firebase.auth
     }
+    private val db: FirebaseFirestore by lazy {
+        Firebase.firestore
+    }
+    private val viewModel: ProductViewModel by activityViewModels()
 
-    private val SHIPPING_COST_CENTS = 1 * PaymentsUtil.CENTS.toLong()
-
-    /**
-     * A client for interacting with the Google Pay API.
-     *
-     * @see [PaymentsClient](https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentsClient)
-     */
-    private lateinit var paymentsClient: PaymentsClient
-    private lateinit var googlePayButton: ExtendedFloatingActionButton
-
-    /**
-     * Arbitrarily-picked constant integer you define to track a request for payment data activity.
-     *
-     * @value #LOAD_PAYMENT_DATA_REQUEST_CODE
-     */
-    private val LOAD_PAYMENT_DATA_REQUEST_CODE = 991
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        paymentSheet = PaymentSheet(this, ::onPaymentSheetResult)
+        paymentIntentClientSecret = getString(R.string.pk)
     }
 
     override fun onCreateView(
@@ -66,145 +58,83 @@ class PaymentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val amt = args.totalAmount
-        googlePayButton = binding.payButton
-        paymentsClient = PaymentsUtil.createPaymentsClient(requireActivity())
-        possiblyShowGooglePayButton()
-        googlePayButton.setOnClickListener { requestPayment() }
-        binding.tvTotalAmount.text = "Rs. ${viewModel.cartTotal.value}"
+        viewModel.getAccount(db, auth)
+        binding.payButton.isEnabled = false // Disable the button until we have a payment intent
+        viewModel.cartTotal.observe(viewLifecycleOwner) {
+            binding.tvTotalAmount.text = "₹$it"
+        }
+        viewModel.customer.observe(viewLifecycleOwner) {
+            validateFromServer(it, viewModel.cartTotal.value?.toFloat() ?: 0f)
+        }
+        binding.payButton.setOnClickListener {
+            presentPaymentSheet()
+        }
 
     }
 
-    private fun requestPayment() {
-        // Disables the button to prevent multiple clicks.
-        googlePayButton.isClickable = false
-
-        // The price provided to the API should include taxes and shipping.
-        // This price is not displayed to the user.
-        val totalPrice = viewModel.cart.value?.getDouble("totalPrice") ?: 0.0
-        val priceCents = Math.round(totalPrice * PaymentsUtil.CENTS.toLong()) + SHIPPING_COST_CENTS
-
-        val paymentDataRequestJson = PaymentsUtil.getPaymentDataRequest(priceCents)
-        if (paymentDataRequestJson == null) {
-            Log.e("RequestPayment", "Can't fetch payment data request")
-            return
-        }
-        val request = PaymentDataRequest.fromJson(paymentDataRequestJson.toString())
-
-        // Since loadPaymentData may show the UI asking the user to select a payment method, we use
-        // AutoResolveHelper to wait for the user interacting with it. Once completed,
-        // onActivityResult will be called with the result.
-        if (request != null) {
-            AutoResolveHelper.resolveTask(
-                paymentsClient.loadPaymentData(request),
-                requireActivity(),
-                LOAD_PAYMENT_DATA_REQUEST_CODE
-            )
-        }
-    }
-
-    @Deprecated("Deprecated in Java")
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            // Value passed in AutoResolveHelper
-            LOAD_PAYMENT_DATA_REQUEST_CODE -> {
-                when (resultCode) {
-                    RESULT_OK ->
-                        data?.let { intent ->
-                            PaymentData.getFromIntent(intent)?.let(::handlePaymentSuccess)
-                        }
-
-                    RESULT_CANCELED -> {
-                        // The user cancelled the payment attempt
-                    }
-
-                    AutoResolveHelper.RESULT_ERROR -> {
-                        AutoResolveHelper.getStatusFromIntent(data)?.let {
-                            handleError(it.statusCode)
-                        }
-                    }
-                }
-
-                // Re-enables the Google Pay payment button.
-                googlePayButton.isClickable = true
+    fun onPaymentSheetResult(paymentSheetResult: PaymentSheetResult) {
+        when (paymentSheetResult) {
+            is PaymentSheetResult.Canceled -> {
+                showAlert("Payment cancelled")
+                binding.payButton.isEnabled = true
+            }
+            is PaymentSheetResult.Failed -> {
+                showAlert("Payment failed ${paymentSheetResult.error.message}")
+            }
+            is PaymentSheetResult.Completed -> {
+                showAlert("Payment completed successfully")
+                viewModel.saveOrder(db, auth)
+                binding.payButton.visibility = View.GONE
             }
         }
     }
 
-    private fun handlePaymentSuccess(paymentData: PaymentData) {
-        val paymentInformation = paymentData.toJson() ?: return
-
-        try {
-            // Token will be null if PaymentDataRequest was not constructed using fromJson(String).
-            val paymentMethodData =
-                JSONObject(paymentInformation).getJSONObject("paymentMethodData")
-            val billingName =
-                paymentMethodData.getJSONObject("info").getJSONObject("billingAddress")
-                    .getString("name")
-            Log.d("BillingName", billingName)
-
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.payments_show_name, billingName),
-                Toast.LENGTH_LONG
-            ).show()
-
-            // Logging token string.
-            Log.d(
-                "GooglePaymentToken", paymentMethodData
-                    .getJSONObject("tokenizationData")
-                    .getString("token")
-            )
-
-        } catch (e: JSONException) {
-            Log.e("handlePaymentSuccess", "Error: " + e.toString())
-        }
-    }
-
-    private fun possiblyShowGooglePayButton() {
-        val isReadyToPayJson = PaymentsUtil.isReadyToPayRequest() ?: return
-        val request = IsReadyToPayRequest.fromJson(isReadyToPayJson.toString()) ?: return
-
-        val task = paymentsClient.isReadyToPay(request)
-        task.addOnCompleteListener { completedTask ->
-            try {
-                completedTask.getResult(ApiException::class.java)?.let(::setGooglePayAvailable)
-            } catch (exception: ApiException) {
-                // Process error
-                Log.w("isReadyToPay failed", exception)
+    private fun validateFromServer(customer: Customer, amount: Float) {
+        val url = getString(R.string.api_url)
+        val params = listOf(
+            "amount" to amount * 100,
+            "currency" to "inr",
+            "email" to customer.email,
+            "name" to customer.name,
+            "phone" to customer.phone,
+            "id" to customer.uid
+        )
+        url.httpPost(
+            params
+        ).responseJson { req, res, result ->
+            Log.d("Request", req.toString())
+            Log.d("Response", res.toString())
+            Log.d("Result", result.toString())
+            if (result is Result.Success) {
+                val responseJson = result.get().obj()
+                paymentIntentClientSecret = responseJson.getString("paymentIntent")
+                val customerId = responseJson.getString("customer")
+                val ephemeralKeySecret = responseJson.getString("ephemeralKey")
+                customerConfig = PaymentSheet.CustomerConfiguration(customerId, ephemeralKeySecret)
+                val publishableKey = responseJson.getString("publishableKey")
+                PaymentConfiguration.init(requireContext(), publishableKey)
+                presentPaymentSheet()
+            } else {
+                showAlert("Error validating from server, make sure server is running on the network and update the API URL in strings.xml")
             }
         }
-    }
-
-    private fun setGooglePayAvailable(available: Boolean) {
-        if (available) {
-            googlePayButton.visibility = View.VISIBLE
-        } else {
-            Toast.makeText(
-                requireContext(),
-                "Unfortunately, Google Pay is not available on this device",
-                Toast.LENGTH_LONG
-            ).show();
-        }
-    }
-
-    private fun handleError(statusCode: Int) {
-        Log.w("loadPaymentData failed", String.format("Error code: %d", statusCode))
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    override fun onStart() {
-        super.onStart()
 
     }
 
-    override fun onStop() {
-        super.onStop()
+    private fun presentPaymentSheet() {
+
+        paymentSheet.presentWithPaymentIntent(
+            paymentIntentClientSecret, PaymentSheet.Configuration(
+                merchantDisplayName = "My Business Merch",
+                customer = customerConfig,
+                allowsDelayedPaymentMethods = true
+            )
+        )
     }
 
+    private fun showAlert(message: String) {
+        AlertDialog.Builder(requireContext()).setTitle("Alert").setMessage(message)
+            .setPositiveButton("OK", null).show()
+    }
 
 }

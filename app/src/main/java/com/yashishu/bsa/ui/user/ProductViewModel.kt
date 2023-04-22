@@ -6,11 +6,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.yashishu.bsa.auth.Customer
 import com.yashishu.bsa.models.CartItem
+import com.yashishu.bsa.models.Order
 import com.yashishu.bsa.models.Product
 import org.json.JSONObject
+import java.util.*
 
 class ProductViewModel : ViewModel() {
+
     private val _products = MutableLiveData<List<Product>>()
     val products: LiveData<List<Product>> = _products
 
@@ -32,6 +36,15 @@ class ProductViewModel : ViewModel() {
 
     private val _cartTotal = MutableLiveData<Float>(0f)
     val cartTotal: LiveData<Float> = _cartTotal
+
+    private val _customer = MutableLiveData<Customer>()
+    val customer: LiveData<Customer> = _customer
+
+    private val _orders = MutableLiveData<List<Order>>()
+    val orders: LiveData<List<Order>> = _orders
+
+    private val _selectedOrder = MutableLiveData<Order>()
+    val selectedOrder: LiveData<Order> = _selectedOrder
 
     fun setCart(amt: Float) {
         val cart = JSONObject()
@@ -86,8 +99,7 @@ class ProductViewModel : ViewModel() {
 
     private fun loadProductsByCategory(db: FirebaseFirestore, category: String) {
         db.collection(COLL_PRODUCTS).whereEqualTo("category", category).get()
-            .addOnFailureListener {}
-            .addOnCanceledListener {
+            .addOnFailureListener {}.addOnCanceledListener {
                 Log.e("UserViewModel", "Cancelled Fetching Products")
             }.addOnSuccessListener {
                 val prds = it.toObjects(Product::class.java)
@@ -117,6 +129,7 @@ class ProductViewModel : ViewModel() {
     }
 
     private fun loadCartItems(db: FirebaseFirestore, uid: String) {
+        _cartTotal.value = 0f
         db.collection(COL_CART).whereEqualTo("uid", uid).get().addOnFailureListener {}
             .addOnCanceledListener {
                 Log.e("UserViewModel", "Cancelled Fetching Products")
@@ -201,7 +214,7 @@ class ProductViewModel : ViewModel() {
                         db.collection(COL_CART).document(doc.id).delete().addOnSuccessListener {
                             Log.d("UserViewModel", "Removed from cart")
                             _isProductInCart.value = false
-                            loadProducts(db)
+                            getProducts(db)
                         }.addOnFailureListener {
                             Log.e("UserViewModel", "Failed to remove from cart")
                         }
@@ -219,9 +232,74 @@ class ProductViewModel : ViewModel() {
             }
     }
 
+    fun getAccount(db: FirebaseFirestore, auth: FirebaseAuth) {
+        Log.d("Uid", auth.currentUser!!.uid)
+        db.collection(COL_ACCOUNTS).whereEqualTo("uid", auth.currentUser!!.uid).get()
+            .addOnSuccessListener {
+                if (it.documents.isNotEmpty()) {
+                    _customer.value = it.toObjects(Customer::class.java)[0]
+                } else {
+                    _customer.value = Customer(
+                        uid = auth.currentUser!!.uid,
+                        name = auth.currentUser!!.displayName ?: "customer",
+                        email = auth.currentUser!!.email!!,
+                        phone = auth.currentUser!!.phoneNumber ?: ""
+                    )
+                }
+            }.addOnFailureListener {
+                Log.e("UserViewModel", "Failed to get account")
+            }
+    }
+
+    fun saveOrder(db: FirebaseFirestore, auth: FirebaseAuth) {
+        val order = Order(
+            uid = auth.currentUser!!.uid,
+            items = _cartItems.value!!,
+            total = _cartTotal.value!!,
+            status = "confirmed",
+            date = Date()
+        )
+        db.collection(COL_ORDERS).add(order).addOnSuccessListener {
+            _cartItems.value = emptyList()
+            _cartTotal.value = 0f
+            deleteCart(db, auth)
+            Log.d("UserViewModel", "Order saved")
+        }.addOnFailureListener {
+            Log.e("UserViewModel", "Failed to save order")
+        }
+    }
+
+    private fun deleteCart(db: FirebaseFirestore, auth: FirebaseAuth) {
+        db.collection(COL_CART).whereEqualTo("uid", auth.currentUser!!.uid).get()
+            .addOnSuccessListener {
+                it.documents.forEach { doc ->
+                    db.collection(COL_CART).document(doc.id).delete().addOnSuccessListener {
+                        Log.d("UserViewModel", "Removed from cart")
+                    }.addOnFailureListener {
+                        Log.e("UserViewModel", "Failed to remove from cart")
+                    }
+                }
+            }
+    }
+
+    fun getOrders(db: FirebaseFirestore, auth: FirebaseAuth) {
+        db.collection(COL_ORDERS).whereEqualTo("uid", auth.currentUser!!.uid).get()
+            .addOnSuccessListener {
+                _orders.value = it.toObjects(Order::class.java)
+            }.addOnFailureListener {
+                Log.e("UserViewModel", "Failed to get orders")
+            }
+    }
+
+    fun setSelectedOrder(it: Order) {
+        _selectedOrder.value = it
+    }
+
 
     companion object {
         const val COLL_PRODUCTS = "products"
         const val COL_CART = "cart"
+        const val COL_ACCOUNTS = "accounts"
+        const val COL_ORDERS = "orders"
     }
 }

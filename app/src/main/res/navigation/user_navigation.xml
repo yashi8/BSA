@@ -9,11 +9,22 @@
         android:id="@+id/user_nav_dashboard"
         android:name="com.yashishu.bsa.ui.user.DashboardFragment"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
-            android:id="@+id/action_user_nav_dashboard_to_customerSupport2"
+            android:id="@+id/action_user_nav_dashboard_to_customerSupport"
             app:destination="@id/customerSupport2" />
+        <action
+            android:id="@+id/action_user_nav_dashboard_to_user_nav_order"
+            app:destination="@id/user_nav_order" />
+        <action
+            android:id="@+id/action_user_nav_dashboard_to_chatBotFragment"
+            app:destination="@id/chatBotFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/user_nav_order"
+        android:name="com.yashishu.bsa.ui.user.OrderFragment"
+        android:label="Order"
+        tools:layout="@layout/fragment_order" />
     <fragment
         android:id="@+id/user_nav_home"
         android:name="com.yashishu.bsa.ui.user.UserHomeFragment"
@@ -41,6 +52,7 @@
     <fragment
         android:id="@+id/customerSupport2"
         android:name="com.yashishu.bsa.ui.CustomerSupport"
+        tools:layout="@layout/fragment_customer_support"
         android:label="Customer Support" />
     <fragment
         android:id="@+id/user_nav_Cart"
@@ -62,12 +74,13 @@
     </fragment>
     <fragment
         android:id="@+id/myAccountUserFragment"
-        android:name="com.yashishu.bsa.ui.user.M"
+        android:name="com.yashishu.bsa.ui.user.MyAccountUserFragment"
         android:label="fragment_my_account_user"
         tools:layout="@layout/fragment_my_account_user" />
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.yashishu.bsa.ui.user.PaymentFragment"
+        tools:layout="@layout/fragment_payment"
         android:label="PaymentFragment">
         <argument
             android:name="totalAmount"
@@ -76,6 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatBotFragment"
+        tools:layout="@layout/fragment_chat_bot"
         android:name="com.yashishu.bsa.ui.user.ChatBotFragment"
         android:label="ChatBotFragment" />
 </navigation>

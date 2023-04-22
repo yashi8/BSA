@@ -19,26 +19,40 @@ class DashboardFragment : Fragment() {
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-
-
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
-                return root
+        return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-
+        binding.apply {
+            btnCustSupport.setOnClickListener { gotoSupportScreen() }
+            btnChatbot.setOnClickListener { gotoChatBotScreen() }
+            btnOrders.setOnClickListener { gotoOrderScreen() }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
     private fun gotoSupportScreen() {
-        findNavController().navigate(R.id.action_vendor_nav_dashboard_to_customerSupport)
+        findNavController().navigate(R.id.action_user_nav_dashboard_to_customerSupport)
+    }
+
+    private fun gotoChatBotScreen() {
+        findNavController().navigate(R.id.action_user_nav_dashboard_to_chatBotFragment)
+    }
+
+    private fun gotoOrderScreen() {
+        findNavController().navigate(R.id.action_user_nav_dashboard_to_user_nav_order)
     }
 
 }

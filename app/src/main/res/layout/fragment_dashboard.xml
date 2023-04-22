@@ -8,38 +8,40 @@
     tools:context=".ui.user.DashboardFragment">
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btncustomersuuports"
+        android:id="@+id/btnCustSupport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="36dp"
         android:text="Customer Support"
         android:textAlignment="center"
         android:textColor="@color/black"
+
         app:backgroundTint="@color/lightgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/cart2"
-        app:layout_constraintStart_toStartOf="@+id/cart2"
-        app:layout_constraintTop_toBottomOf="@+id/cart2" />
+        app:layout_constraintEnd_toEndOf="@+id/btnChatbot"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/btnChatbot"
+        app:layout_constraintTop_toBottomOf="@+id/btnChatbot" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/cart2"
+        android:id="@+id/btnChatbot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="36dp"
         android:text="Shop Buddy"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:backgroundTint="@color/lightgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/shopbuddy"
-        app:layout_constraintStart_toStartOf="@+id/shopbuddy"
-        app:layout_constraintTop_toBottomOf="@+id/shopbuddy" />
+        app:layout_constraintEnd_toEndOf="@+id/btnOrders"
+        app:layout_constraintStart_toStartOf="@+id/btnOrders"
+        app:layout_constraintTop_toBottomOf="@+id/btnOrders" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/shopbuddy"
+        android:id="@+id/btnOrders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="156dp"
         android:text="My Orders"
         android:textAlignment="center"
         android:textColor="@color/black"

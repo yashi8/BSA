@@ -21,7 +21,6 @@ import com.yashishu.bsa.adapter.CartAdapter
 import com.yashishu.bsa.databinding.FragmentUsercartBinding
 
 class UserCartFragment : Fragment() {
-
     private var _binding: FragmentUsercartBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -52,6 +51,7 @@ class UserCartFragment : Fragment() {
         viewModel.getCartItems(db, auth)
         val adapter = CartAdapter {
             viewModel.removeCartItem(db, auth, it)
+
         }
         binding.apply {
             rvCart.layoutManager = LinearLayoutManager(requireContext())
