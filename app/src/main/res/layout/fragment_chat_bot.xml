@@ -1,73 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user.ChatBotFragment">
 
-    <data>
 
-        <variable
-            name="vm"
-            type="com.yashishu.bsa.ui.user.ChatBotViewModel" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout16"
+    <LinearLayout
+        android:id="@+id/ll_layout_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        tools:context=".ui.user.ChatBotFragment">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#E4E4E4"
+        android:orientation="horizontal">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/botRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-
-            android:background="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/idLLMessage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/idLLMessage"
+        <EditText
+            android:id="@+id/et_message"
+            android:inputType="textShortMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:weightSum="5"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_margin="10dp"
+            android:layout_weight=".5"
+            android:background="@drawable/round_button"
+            android:backgroundTint="@android:color/white"
+            android:hint="Type a message..."
+            android:padding="10dp"
+            android:singleLine="true" />
 
-            <!--edit text to enter message-->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4">
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_button"
+            android:backgroundTint="#26A69A"
+            android:text="Send"
+            android:textColor="@android:color/white" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editBotQuery"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter Message" />
-            </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_messages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_layout_bar"
+        android:layout_below="@+id/dark_divider"
+        tools:itemCount="20"
+        tools:listitem="@layout/message_item" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#42A5F5"
+        android:id="@+id/dark_divider"/>
 
 
-            <!--button to send message-->
-            <ImageButton
-                android:id="@+id/ibSend"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="@color/purple_200"
-                android:contentDescription="@string/ask_message"
-                android:src="@android:drawable/ic_menu_send"
-                app:tint="@color/white" />
-
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</RelativeLayout>
