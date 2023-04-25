@@ -41,9 +41,13 @@
     </fragment>
     <fragment
         android:id="@+id/vendor_nav_orders"
-        android:name="com.yashishu.bsa.ui.vendor.OrdersFragment"
-        android:label="fragment_orders"
-        tools:layout="@layout/fragment_orders" />
+        android:name="com.yashishu.bsa.ui.vendor.VendorOrdersFragment"
+        android:label="Received Orders"
+        tools:layout="@layout/fragment_orders">
+        <action
+            android:id="@+id/action_vendor_nav_orders_to_vendorOrderDetailFragment"
+            app:destination="@id/vendorOrderDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerSupport"
         android:name="com.yashishu.bsa.ui.CustomerSupport"
@@ -52,9 +56,18 @@
         android:id="@+id/editProductFragment"
         android:name="com.yashishu.bsa.ui.vendor.EditProductFragment"
         android:label="fragment_edit_product"
-        tools:layout="@layout/fragment_edit_product" >
+        tools:layout="@layout/fragment_edit_product">
         <action
             android:id="@+id/action_editProductFragment_to_vendor_nav_product"
             app:destination="@id/vendor_nav_product" />
+    </fragment>
+    <fragment
+        android:id="@+id/vendorOrderDetailFragment"
+        android:name="com.yashishu.bsa.ui.vendor.VendorOrderDetailFragment"
+        android:label="Order Detail"
+        tools:layout="@layout/fragment_vendor_order_detail">
+        <argument
+            android:name="orderId"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -35,5 +35,5 @@
     <string name="payments_show_name" translatable="false">Successfully received payment data for %s!</string>
     <string name="ask_message">Ask</string>
     <string name="pk">pk_test_51KuagNSHSR0QAHQZWocM4lGu7ufWGhCB4HRUQJrbB1tk5IJOevnK6x3oLaBAsPoGhYpHqF0uQfbU1g2PKGcyokOo003HNgG17D</string>
-    <string name="api_url">http://192.168.18.109:8000//checkout</string>
+    <string name="api_url">http://192.168.18.38:8000//checkout</string>
 </resources>

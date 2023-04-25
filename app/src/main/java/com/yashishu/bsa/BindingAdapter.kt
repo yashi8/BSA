@@ -7,6 +7,10 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import com.yashishu.bsa.R
 import com.yashishu.bsa.models.CartItem
+import com.yashishu.bsa.models.Order
+import java.lang.Math.round
+import java.util.Calendar
+import java.util.Date
 
 @BindingAdapter("load")
 fun ImageView.loadImage(url: String?) {
@@ -66,4 +70,46 @@ fun ProgressBar.setVisiblity(state: ProductState) {
     } else {
         ProgressBar.GONE
     }
+}
+
+@BindingAdapter("display_state")
+fun TextView.displayState(size: Int) {
+    if (size == 0) {
+        visibility = TextView.VISIBLE
+    } else {
+        visibility = TextView.GONE
+    }
+}
+
+@BindingAdapter("show_order_text")
+fun TextView.showOrderText(order: Order) {
+    if (order.status == "Shipped") {
+        setTextColor(resources.getColor(R.color.lgreen, null))
+    }
+    text = "Order # ${order.orderId} (${order.status})"
+}
+
+@BindingAdapter("display_date")
+fun TextView.displayDate(date: Date) {
+    // date format: 2021-05-01 12:00
+    val cal = Calendar.getInstance()
+    cal.time = date
+    val day = cal.get(Calendar.DAY_OF_MONTH)
+    val month = cal.get(Calendar.MONTH) + 1
+    val year = cal.get(Calendar.YEAR)
+    val hour = cal.get(Calendar.HOUR_OF_DAY)
+    val minute = cal.get(Calendar.MINUTE)
+    val time = "$hour:$minute"
+    val date = "$day/$month/$year"
+    text = "$date\n$time"
+}
+
+@BindingAdapter("dispay_price")
+fun TextView.displayPrice(price: Float) {
+    text = "₹ ${round(price)}.00"
+}
+
+@BindingAdapter("show_price")
+fun TextView.showPrice(price: String) {
+    text = "₹ $price.00"
 }

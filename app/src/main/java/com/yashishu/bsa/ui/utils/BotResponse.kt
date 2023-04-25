@@ -2,16 +2,16 @@ package com.yashishu.bsa.ui.utils
 
 import com.yashishu.bsa.ui.utils.Constants.OPEN_GOOGLE
 import com.yashishu.bsa.ui.utils.Constants.OPEN_SEARCH
-import java.security.Timestamp
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 
 object BotResponse {
 
     fun basicResponses(_message: String): String {
 
         val random = (0..2).random()
-        val message =_message.toLowerCase()
+        val message = _message.toLowerCase()
 
         return when {
 
@@ -41,7 +41,8 @@ object BotResponse {
                     0 -> "Hello there!"
                     1 -> "Sup"
                     2 -> "Buongiorno!"
-                    else -> "error" }
+                    else -> "error"
+                }
             }
 
             //How are you?
@@ -55,8 +56,8 @@ object BotResponse {
             }
 
             //What time is it?
-            message.contains("time") && message.contains("?")-> {
-                val timeStamp = Timestamp(System.currentTimeMillis())
+            message.contains("time") && message.contains("?") -> {
+                val timeStamp = Calendar.getInstance().time
                 val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
                 val date = sdf.format(Date(timeStamp.time))
 
@@ -64,12 +65,12 @@ object BotResponse {
             }
 
             //Open Google
-            message.contains("open") && message.contains("google")-> {
+            message.contains("open") && message.contains("google") -> {
                 OPEN_GOOGLE
             }
 
             //Search on the internet
-            message.contains("search")-> {
+            message.contains("search") -> {
                 OPEN_SEARCH
             }
 

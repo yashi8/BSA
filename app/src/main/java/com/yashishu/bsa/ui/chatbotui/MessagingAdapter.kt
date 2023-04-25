@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yashishu.bsa.R
-import com.yashishu.bsa.ui.utils.Constants.RECEIVE_ID
-import com.yashishu.bsa.ui.utils.Constants.SEND_ID
 
 class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>() {
 
@@ -39,22 +37,22 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val currentMessage = messagesList[position]
 
-        when (currentMessage.id) {
-            SEND_ID -> {
-                holder.itemView.tv_message.apply {
-                    text = currentMessage.message
-                    visibility = View.VISIBLE
-                }
-                holder.itemView.tv_bot_message.visibility = View.GONE
-            }
-            RECEIVE_ID -> {
-                holder.itemView.tv_bot_message.apply {
-                    text = currentMessage.message
-                    visibility = View.VISIBLE
-                }
-                holder.itemView.tv_message.visibility = View.GONE
-            }
-        }
+//        when (currentMessage.id) {
+//            SEND_ID -> {
+//                holder.itemView.tv_message.apply {
+//                    text = currentMessage.message
+//                    visibility = View.VISIBLE
+//                }
+//                holder.itemView.tv_bot_message.visibility = View.GONE
+//            }
+//            RECEIVE_ID -> {
+//                holder.itemView.tv_bot_message.apply {
+//                    text = currentMessage.message
+//                    visibility = View.VISIBLE
+//                }
+//                holder.itemView.tv_message.visibility = View.GONE
+//            }
+//        }
     }
 
     fun insertMessage(message: Notification.MessagingStyle.Message) {

@@ -1,13 +1,12 @@
 package com.yashishu.bsa.auth
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -20,9 +19,9 @@ import com.yashishu.bsa.databinding.FragmentVndrLoginBinding
 
 class VndrLoginFragment : Fragment() {
 
-    private var _binding: FragmentVndrLoginBinding?=null
-    private val binding get()=_binding!!
-    private lateinit var auth:FirebaseAuth
+    private var _binding: FragmentVndrLoginBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,9 +104,11 @@ class VndrLoginFragment : Fragment() {
     }
 
     private fun takeVendorToDashboard() {
-        PrefUtil(requireActivity()).setUserType(1)
-        startActivity(Intent(requireContext(), MainActivity::class.java))
-        requireActivity().finish()
+        PrefUtil(requireActivity()).setUserType(1).apply {
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            requireActivity().finish()
+        }
+
     }
 
 }
