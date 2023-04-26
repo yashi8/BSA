@@ -5,17 +5,13 @@
         android:id="@+id/user_nav_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
-    <item
-        android:id="@+id/user_nav_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+
     <item
         android:id="@+id/user_nav_Cart"
         android:icon="@drawable/ic_baseline_shopping_cart_checkout_24"
-        android:title="Cart" />
-
+        android:title="@string/cart" />
     <item
-        android:id="@+id/nav_user_account"
+        android:id="@+id/user_nav_dashboard"
         android:icon="@drawable/ic_baseline_account_circle_24"
-        android:title="Account" />
+        android:title="@string/account" />
 </menu>

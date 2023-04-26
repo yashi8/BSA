@@ -36,4 +36,6 @@
     <string name="ask_message">Ask</string>
     <string name="pk">pk_test_51KuagNSHSR0QAHQZWocM4lGu7ufWGhCB4HRUQJrbB1tk5IJOevnK6x3oLaBAsPoGhYpHqF0uQfbU1g2PKGcyokOo003HNgG17D</string>
     <string name="api_url">http://192.168.18.38:8000//checkout</string>
+    <string name="account">Account</string>
+    <string name="cart">Cart</string>
 </resources>

@@ -3,10 +3,6 @@
 
 
     <item
-        android:id="@+id/vendor_nav_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
-    <item
         android:id="@+id/vendor_nav_product"
         android:icon="@drawable/ic_shopping_cart_black_24dp"
         android:title="@string/title_product" />
@@ -15,7 +11,7 @@
         android:icon="@drawable/ic_orders_black_24dp"
         android:title="@string/title_orders" />
     <item
-        android:id="@+id/Vendor_nav_Account"
+        android:id="@+id/vendor_nav_dashboard"
         android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="Account" />
 

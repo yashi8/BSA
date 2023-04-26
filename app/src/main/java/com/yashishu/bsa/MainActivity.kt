@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 navView.menu.clear()
                 navView.inflateMenu(R.menu.vendor_bottom_nav_menu)
                 navController.setGraph(R.navigation.vendor_navigation)
-                val appBarConfiguration = AppBarConfiguration(setOf(R.id.vendor_nav_dashboard, R.id.vendor_nav_product, R.id.vendor_nav_orders,R.id.Vendor_nav_Account))
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.vendor_nav_dashboard, R.id.vendor_nav_product, R.id.vendor_nav_orders))
                 setupActionBarWithNavController(navController, appBarConfiguration)
             }
             2 -> {
