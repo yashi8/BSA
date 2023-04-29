@@ -6,8 +6,6 @@
     <string name="title_vendordashboard">Dashboard</string>
     <string name="title_vendorHome">Home</string>
     <string name="title_vendorProducts">Product List</string>
-
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="permission_required">Storage access is required to select image from gallery.</string>
@@ -35,7 +33,7 @@
     <string name="payments_show_name" translatable="false">Successfully received payment data for %s!</string>
     <string name="ask_message">Ask</string>
     <string name="pk">pk_test_51KuagNSHSR0QAHQZWocM4lGu7ufWGhCB4HRUQJrbB1tk5IJOevnK6x3oLaBAsPoGhYpHqF0uQfbU1g2PKGcyokOo003HNgG17D</string>
-    <string name="api_url">http://192.168.18.38:8000//checkout</string>
+    <string name="api_url">http://192.168.1.9:8000//checkout</string>
     <string name="account">Account</string>
     <string name="cart">Cart</string>
 </resources>

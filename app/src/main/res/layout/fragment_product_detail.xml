@@ -77,12 +77,11 @@
                         android:layout_width="0dp"
                         android:layout_height="2dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:background="@color/btncolor"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvQtyTenTimes" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvQty" />
 
                     <TextView
                         android:id="@+id/tvCategory"
@@ -114,24 +113,6 @@
                         app:single_item="@{product.price}"
                         tools:text="@string/price_per_qty" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/tvQtyTenTimes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/price_bg_drawable"
-                        android:enabled="false"
-                        android:fontFamily="sans-serif-black"
-                        android:padding="12dp"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/tvQty"
-                        app:layout_constraintTop_toBottomOf="@+id/tvCategory"
-                        app:ten_item="@{product.price}"
-                        tools:text="@string/price_per_qty_2" />
-
                     <TextView
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
@@ -150,7 +131,10 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="64dp"
+                        android:paddingBottom="20dp"
                         android:text="@{product.desc}"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
@@ -176,7 +160,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Add to cart"
+                android:text="Add"
                 app:backgroundTint="@color/teal_200"
                 app:icon="@drawable/ic_orders_black_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -187,7 +171,7 @@
                 android:id="@+id/tvQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="1 Product"
@@ -200,16 +184,16 @@
                 android:id="@+id/tvPriceCalculated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif-condensed"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fab"
+                app:layout_constraintStart_toStartOf="@+id/tvQuantity"
                 app:layout_constraintTop_toBottomOf="@+id/tvQuantity"
                 app:price_calculated="@{product.price}"
-                tools:text="Rs. 88,00 (excluding GST)" />
+                tools:text="Rs. 88,00" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -87,4 +87,9 @@
         tools:layout="@layout/fragment_chat_bot"
         android:name="com.yashishu.bsa.ui.user.ChatBotFragment"
         android:label="ChatBotFragment" />
+    <fragment
+        android:id="@+id/my_profile"
+        android:name="com.yashishu.bsa.my_profile"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
 </navigation>

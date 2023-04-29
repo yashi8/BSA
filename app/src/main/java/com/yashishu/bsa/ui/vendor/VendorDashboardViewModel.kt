@@ -23,7 +23,8 @@ class VendorDashboardViewModel : ViewModel() {
     private val _saveState = MutableLiveData<ProductState>(ProductState.NONE)
     val saveState: LiveData<ProductState> = _saveState
 
-    fun getProducts(db: FirebaseFirestore, vendorId: String) {
+    fun
+            getProducts(db: FirebaseFirestore, vendorId: String) {
         loadProducts(db, vendorId)
     }
 
@@ -76,7 +77,8 @@ class VendorDashboardViewModel : ViewModel() {
                         it.title = title
                         it.desc = desc
                         it.category=selectedCategory
-                        it.price = price.toDouble().toString()
+                        it.price =price.toDouble().toString()
+
 
                         db.collection(COLL_PRODUCTS).document(query.documents[0].id).set(it)
                             .addOnSuccessListener {

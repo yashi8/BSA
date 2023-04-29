@@ -51,7 +51,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:text="@{String.valueOf(product.price)}"
+                android:text="@{'₹'+String.valueOf(product.price)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textSize="16sp"
                 android:textStyle="bold"
