@@ -1,16 +1,22 @@
-package com.codepalace.chatbot.ui
+package com.yashishu.ui.chatbotui
 
-import android.annotation.SuppressLint
-import android.app.Notification
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yashishu.bsa.R
+import com.yashishu.bsa.ui.utils.Constants.RECEIVE_ID
+import com.yashishu.bsa.ui.utils.Constants.SEND_ID
+import android.view.View
+import com.yashishu.bsa.databinding.FragmentChatBotBinding
+import com.yashishu.bsa.ui.data.Message
+import com.yashishu.bsa.ui.user.ChatBotFragment
+
 
 class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>() {
 
-    var messagesList = mutableListOf<Notification.MessagingStyle.Message>()
+
+    var messagesList = mutableListOf<Message>()
 
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
@@ -33,29 +39,28 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
         return messagesList.size
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val currentMessage = messagesList[position]
+          /*  when (currentMessage.id) {
+                SEND_ID -> {
+                    holder.itemView.tv_message.apply {
+                        text = currentMessage.message
+                        visibility = View.VISIBLE
+                    }
+                    holder.itemView.tv_bot_message.visibility = View.GONE
+                }
+                RECEIVE_ID -> {
+                    holder.itemView.tv_bot_message.apply {
+                        text = currentMessage.message
+                        visibility = View.VISIBLE
+                    }
+                    holder.itemView.tv_message.visibility = View.GONE
+                }
+            }*/
 
-//        when (currentMessage.id) {
-//            SEND_ID -> {
-//                holder.itemView.tv_message.apply {
-//                    text = currentMessage.message
-//                    visibility = View.VISIBLE
-//                }
-//                holder.itemView.tv_bot_message.visibility = View.GONE
-//            }
-//            RECEIVE_ID -> {
-//                holder.itemView.tv_bot_message.apply {
-//                    text = currentMessage.message
-//                    visibility = View.VISIBLE
-//                }
-//                holder.itemView.tv_message.visibility = View.GONE
-//            }
-//        }
     }
 
-    fun insertMessage(message: Notification.MessagingStyle.Message) {
+    fun insertMessage(message: Message) {
         this.messagesList.add(message)
         notifyItemInserted(messagesList.size)
     }

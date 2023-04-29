@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.ChatBotFragment">
+    tools:context="com.yashishu.bsa.ui.user.ChatBotFragment">
 
 
     <LinearLayout
@@ -24,12 +24,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight=".5"
+            android:autofillHints=""
             android:background="@drawable/round_button"
             android:backgroundTint="@android:color/white"
-            android:hint="Type a message..."
+            android:hint="@string/type_a_message"
             android:inputType="textShortMessage"
+            android:minHeight="48dp"
             android:padding="10dp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColorHint="#757575" />
 
         <Button
             android:id="@+id/btn_send"
@@ -39,7 +42,7 @@
             android:layout_weight="1"
             android:background="@drawable/round_button"
             android:backgroundTint="#26A69A"
-            android:text="Send"
+            android:text="@string/send"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

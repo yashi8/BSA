@@ -35,7 +35,14 @@ class DashboardFragment : Fragment() {
             btnCustSupport.setOnClickListener { gotoSupportScreen() }
             btnChatbot.setOnClickListener { gotoChatBotScreen() }
             btnOrders.setOnClickListener { gotoOrderScreen() }
+            btnTrackOrders.setOnClickListener { gotoTrackOrderScreen() }
+            btnProfile.setOnClickListener {         findNavController().navigate(R.id.action_user_nav_dashboard_to_my_profile)
+            }
         }
+    }
+
+    private fun gotoTrackOrderScreen() {
+        TODO("Not yet implemented")
     }
 
     override fun onDestroyView() {

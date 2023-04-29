@@ -8,6 +8,38 @@
     tools:context=".ui.user.DashboardFragment">
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+
+        android:text="View Profile"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
+        app:layout_constraintEnd_toEndOf="@+id/btnCustSupport"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="@+id/btnCustSupport"
+        app:layout_constraintTop_toBottomOf="@+id/btnTrackOrders" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnTrackOrders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Track Orders"
+        android:textAlignment="center"
+
+        android:textColor="@color/black"
+        app:backgroundTint="@color/lightgreen"
+        app:iconTint="@color/lb"
+        app:layout_constraintEnd_toEndOf="@+id/btnCustSupport"
+        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintStart_toStartOf="@+id/btnCustSupport"
+        app:layout_constraintTop_toBottomOf="@+id/btnCustSupport" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnCustSupport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
