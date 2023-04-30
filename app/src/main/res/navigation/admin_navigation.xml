@@ -24,8 +24,8 @@
         android:label="fragment_view_users"
         tools:layout="@layout/fragment_view_users" />
     <fragment
-        android:id="@+id/customerRequestsFragment"
-        android:name="com.yashishu.bsa.CustomerRequestsFragment"
+        android:id="@+id/admin_nav_support"
+        android:name="com.yashishu.bsa.ui.admin.CustomerRequestsFragment"
         android:label="fragment_customer_requests"
         tools:layout="@layout/fragment_customer_requests" />
 </navigation>

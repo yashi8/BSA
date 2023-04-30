@@ -5,4 +5,9 @@
         android:id="@+id/admin_nav_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/admin_nav_support"
+        android:icon="@drawable/ic_baseline_support_24"
+        android:title="Requests" />
 </menu>

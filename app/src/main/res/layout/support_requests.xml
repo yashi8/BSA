@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="form"
+            type="com.yashishu.bsa.models.SupportForm" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/llCartQuantity"
+        app:layout_constraintTop_toTopOf="@+id/llCartQuantity">
+
+
+        <TextView
+            android:id="@+id/tvCartTitle"
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:text="@{form.name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/emailtext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Some Kind of Juice" />
+
+
+        <TextView
+            android:id="@+id/emailtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{form.email}"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvCartTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvCartTitle"
+            tools:layout_editor_absoluteY="34dp"
+            tools:text="xyz@gmail.com" />
+
+        <TextView
+            android:id="@+id/mobilenotext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{form.mobileno}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintEnd_toEndOf="@+id/emailtext"
+            app:layout_constraintStart_toStartOf="@+id/emailtext"
+            app:layout_constraintTop_toBottomOf="@+id/emailtext"
+            tools:text="Some Kind of Juice" />
+
+        <TextView
+            android:id="@+id/desctext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:text="@{form.desc}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/mobilenotext"
+            app:layout_constraintStart_toStartOf="@+id/mobilenotext"
+            app:layout_constraintTop_toTopOf="@id/mobilenotext"
+            tools:text="Kind of Juice" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
