@@ -51,9 +51,12 @@ class ViewProductsFragment: Fragment() {
                         findNavController().navigateUp()
                         true
                     }
-                    R.id.action_report -> {
+                 /*
+                 R.id.action_report -> {
                         true
-                    }
+                  }
+                  */
+
                     R.id.action_rationgs -> {
                         true
                     }

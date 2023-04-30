@@ -15,6 +15,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="#0F3325"
         android:text="Admin"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/userlogin"
         app:layout_constraintEnd_toEndOf="@+id/userlogin"
         app:layout_constraintStart_toStartOf="@+id/userlogin"
@@ -22,13 +23,14 @@
 
     <Button
         android:id="@+id/userlogin"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#0F3325"
         android:text="User"
         app:layout_constraintBottom_toTopOf="@+id/vendorlogin"
         app:layout_constraintEnd_toEndOf="@+id/vendorlogin"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/vendorlogin"
         app:layout_constraintTop_toBottomOf="@+id/adminlogin" />
 

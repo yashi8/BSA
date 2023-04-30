@@ -13,7 +13,7 @@
     <item>
         <inset android:inset="4dp">
             <shape>
-                <solid android:color="@color/lgreen" />
+                <solid android:color="#BBDAA3" />
                 <corners android:radius="4dp" />
                 <size android:width="120dp" android:height="120dp" />
             </shape>
