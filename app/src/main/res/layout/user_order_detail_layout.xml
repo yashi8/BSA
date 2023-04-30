@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="prd"
-            type="com.yashishu.bsa.models.Product" />
+            name="item"
+            type="com.yashishu.bsa.models.CartItem" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -23,13 +23,13 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="231dp"
+                android:layout_marginEnd="203dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/fabUpdateLocation"
+                app:layout_constraintEnd_toStartOf="@+id/fabLocate"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvOProductTitle"
-                app:load="@{prd.img_url}"
+                app:load="@{item.product.img_url}"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="@{prd.title}"
+                android:text="@{item.product.title}"
                 app:layout_constraintStart_toEndOf="@+id/tvOrderedImage"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="OrderedProduct" />
@@ -51,7 +51,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toEndOf="@+id/tvOrderedImage"
                 app:layout_constraintTop_toBottomOf="@+id/tvOProductTitle"
-                app:show_price="@{prd.price}"
+                app:show_price="@{item.product.price}"
                 tools:text="price" />
 
             <TextView
@@ -59,22 +59,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@{prd.category}"
+                android:text="@{item.product.category}"
                 app:layout_constraintBottom_toBottomOf="@+id/tvOrderedImage"
                 app:layout_constraintStart_toEndOf="@+id/tvOrderedImage"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocation"
                 tools:text="Category" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabUpdateLocation"
+                android:id="@+id/fabLocate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:clickable="true"
-                android:src="@drawable/baseline_location_on_24"
                 app:fabSize="mini"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/baseline_map_24" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
+                android:hint="Tracking Location"
+                android:text="@{item.product.address}"
+                app:layout_constraintStart_toEndOf="@+id/tvOrderedImage"
+                app:layout_constraintTop_toBottomOf="@+id/tvOProductPrice" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

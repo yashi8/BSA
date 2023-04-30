@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -52,13 +53,17 @@ class OrderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getOrders(db, auth)
 
-        viewModel.orders.observe(viewLifecycleOwner) {
+        viewModel.orders.observe(viewLifecycleOwner) { orders ->
             val orderAdapter = OrderAdapter {
                 viewModel.setSelectedOrder(it)
+                val dirs =
+                    OrderFragmentDirections.actionUserNavOrderToUserOrderDetailFragment(it.orderId)
+                findNavController().navigate(dirs)
+
             }
             binding.rvUserOrders.layoutManager = LinearLayoutManager(requireContext())
             binding.rvUserOrders.adapter = orderAdapter
-            orderAdapter.submitList(it)
+            orderAdapter.submitList(orders)
 
         }
     }

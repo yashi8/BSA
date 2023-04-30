@@ -11,76 +11,74 @@
         android:id="@+id/btnProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_square_btn"
         android:text="View Profile"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:backgroundTint="@color/lightgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/btnCustSupport"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="@+id/btnCustSupport"
-        app:layout_constraintTop_toBottomOf="@+id/btnTrackOrders" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCustSupport" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnTrackOrders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_square_btn"
         android:text="Track Orders"
         android:textAlignment="center"
-
         android:textColor="@color/black"
         app:backgroundTint="@color/lightgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/btnCustSupport"
-        app:layout_constraintHorizontal_bias="0.279"
-        app:layout_constraintStart_toStartOf="@+id/btnCustSupport"
-        app:layout_constraintTop_toBottomOf="@+id/btnCustSupport" />
+        app:layout_constraintStart_toStartOf="@+id/btnChatbot"
+        app:layout_constraintTop_toBottomOf="@+id/btnChatbot" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnCustSupport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Customer Support"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_square_btn"
+        android:text="Customer\nSupport"
         android:textAlignment="center"
         android:textColor="@color/black"
-
         app:backgroundTint="@color/lightgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/btnChatbot"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/btnChatbot"
-        app:layout_constraintTop_toBottomOf="@+id/btnChatbot" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOrders" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnChatbot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="42dp"
+        android:background="@drawable/bg_square_btn"
         android:text="Shop Buddy"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:backgroundTint="@color/lightgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="@+id/btnOrders"
-        app:layout_constraintStart_toStartOf="@+id/btnOrders"
-        app:layout_constraintTop_toBottomOf="@+id/btnOrders" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnOrders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
+        android:layout_marginStart="27dp"
+        android:background="@drawable/bg_square_btn"
         android:text="My Orders"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:backgroundTint="@color/lightgreen"
         app:iconTint="@color/lb"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/btnChatbot"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/btnChatbot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

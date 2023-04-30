@@ -28,7 +28,7 @@ class OrderedProductAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val prd = getItem(position)
         holder.bind(prd)
-        holder.itemView.setOnClickListener {
+        holder.binding.fabUpdateLocation.setOnClickListener {
             onOrderClick(prd)
         }
     }

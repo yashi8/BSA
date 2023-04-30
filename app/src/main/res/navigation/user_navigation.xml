@@ -27,7 +27,11 @@
         android:id="@+id/user_nav_order"
         android:name="com.yashishu.bsa.ui.user.OrderFragment"
         android:label="Order"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order">
+        <action
+            android:id="@+id/action_user_nav_order_to_userOrderDetailFragment"
+            app:destination="@id/userOrderDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/user_nav_home"
         android:name="com.yashishu.bsa.ui.user.UserHomeFragment"
@@ -95,4 +99,12 @@
         android:name="com.yashishu.bsa.my_profile"
         android:label="fragment_my_profile"
         tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/userOrderDetailFragment"
+        android:name="com.yashishu.bsa.ui.user.UserOrderDetailFragment"
+        android:label="UserOrderDetailFragment">
+        <argument
+            android:name="orderId"
+            app:argType="string" />
+    </fragment>
 </navigation>

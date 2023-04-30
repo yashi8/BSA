@@ -11,7 +11,7 @@ import com.yashishu.bsa.models.CartItem
 import com.yashishu.bsa.models.Order
 import com.yashishu.bsa.models.Product
 import org.json.JSONObject
-import java.util.*
+import java.util.Date
 
 class ProductViewModel : ViewModel() {
 
@@ -283,9 +283,17 @@ class ProductViewModel : ViewModel() {
     }
 
     fun getOrders(db: FirebaseFirestore, auth: FirebaseAuth) {
+        val userOrders = mutableListOf<Order>()
         db.collection(COL_ORDERS).whereEqualTo("uid", auth.currentUser!!.uid).get()
             .addOnSuccessListener {
-                _orders.value = it.toObjects(Order::class.java)
+                for (doc in it.documents) {
+                    val order = doc.toObject(Order::class.java)
+                    order?.orderId = doc.id
+                    if (order != null) {
+                        userOrders.add(order)
+                    }
+                }
+                _orders.value = userOrders
             }.addOnFailureListener {
                 Log.e("UserViewModel", "Failed to get orders")
             }
