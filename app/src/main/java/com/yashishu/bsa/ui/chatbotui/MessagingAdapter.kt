@@ -41,7 +41,7 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val currentMessage = messagesList[position]
-          /*  when (currentMessage.id) {
+           /* when (currentMessage.id) {
                 SEND_ID -> {
                     holder.itemView.tv_message.apply {
                         text = currentMessage.message

@@ -53,7 +53,7 @@
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/addproback"
+            android:background="@drawable/viewproductbackground"
             app:layout_anchor="@+id/nestedScrollView"
             app:layout_anchorGravity="center"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
@@ -95,9 +95,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
                         android:contentDescription="Category"
-                        android:text="Category"
                         android:scaleType="fitEnd"
-                        android:src="@drawable/ic_baseline_category_24" />
+                        android:src="@drawable/ic_baseline_category_24"
+                        android:text="Category" />
 
                     <TextView
                         android:id="@+id/ProdCategory"
@@ -108,8 +108,8 @@
                         android:text="@{viewModel.selectedProduct.category}"
                         android:textAlignment="center"
                         android:textStyle="bold"
-                        tools:text="Category"
-                        tools:ignore="RtlCompat" />
+                        tools:ignore="RtlCompat"
+                        tools:text="Category" />
                 </LinearLayout>
 
                 <TextView
@@ -123,6 +123,7 @@
                     android:text="@{viewModel.selectedProduct.desc}"
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#000000"
                     tools:text="Description" />
 
             </LinearLayout>

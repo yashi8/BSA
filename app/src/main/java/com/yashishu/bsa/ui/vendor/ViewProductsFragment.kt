@@ -55,11 +55,11 @@ class ViewProductsFragment: Fragment() {
                  R.id.action_report -> {
                         true
                   }
-                  */
+
 
                     R.id.action_rationgs -> {
                         true
-                    }
+                    }*/
                     else -> false
                 }
             }

@@ -43,7 +43,7 @@
                 <com.aemerse.slider.ImageCarousel
                     android:id="@+id/carousel"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="250dp"
                     app:bottomShadowAlpha="0.6"
                     app:bottomShadowHeight="64dp"
                     app:captionMargin="0dp"
@@ -54,9 +54,6 @@
                     app:imageScaleType="centerCrop"
                     app:indicatorMargin="0dp"
 
-                    app:layout_constraintEnd_toEndOf="@+id/searchView"
-
-                    app:layout_constraintStart_toStartOf="@+id/searchView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:showBottomShadow="true"
                     app:showCaption="true"
@@ -66,27 +63,17 @@
                     app:topShadowHeight="32dp" />
 
 
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="#FBF6F6"
-                    android:padding="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/carousel" />
-
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="30dp"
                     android:text="Popular Products"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/searchView" />
+                    app:layout_constraintTop_toBottomOf="@+id/carousel" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvTopProduct"

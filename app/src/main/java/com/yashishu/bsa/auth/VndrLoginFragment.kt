@@ -42,7 +42,7 @@ class VndrLoginFragment : Fragment() {
             btnvndLogin.setOnClickListener { verifyLogin() }
             vndRegisterLink.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_vndrRegisterFragment) }
             imgPhone2.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_phoneLogin) }
-            imgGoogle2.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_googleLoginFragment) }
+            //imgGoogle2.setOnClickListener { findNavController().navigate(R.id.action_vndrLoginFragment_to_googleLoginFragment) }
 
         }
 

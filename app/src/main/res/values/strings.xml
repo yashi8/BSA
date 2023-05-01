@@ -32,7 +32,7 @@
     <string name="googlepay_status_checking" translatable="false">Checking if Google Pay is available...</string>
     <string name="payments_show_name" translatable="false">Successfully received payment data for %s!</string>
     <string name="ask_message">Ask</string>
-    <string name="pk">pk_test_51KuagNSHSR0QAHQZWocM4lGu7ufWGhCB4HRUQJrbB1tk5IJOevnK6x3oLaBAsPoGhYpHqF0uQfbU1g2PKGcyokOo003HNgG17D</string>
+    <string name="pk">pk_test_51MuZ36SI6CIXxhZgDxCkqN4QJUXR1Ci3xBfEUkH32s2FOrIXKZIaORHoR8kzEQBWQ02OW8lTGkBsdEeyWmlJvQof00x99mQIYX</string>
     <string name="api_url">http://192.168.1.9:8000//checkout</string>
     <string name="account">Account</string>
     <string name="cart">Cart</string>

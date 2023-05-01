@@ -107,4 +107,9 @@
             android:name="orderId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/feedbackFragment"
+        android:name="com.yashishu.bsa.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" />
 </navigation>

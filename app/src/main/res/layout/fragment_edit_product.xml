@@ -116,7 +116,7 @@
                 android:id="@+id/proPrice2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{'₹'+String.valueOf(vm.selectedProduct.price)}"
+                android:text="@{String.valueOf(vm.selectedProduct.price)}"
                 android:hint="Price"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
